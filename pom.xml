@@ -68,13 +68,13 @@
                                 <goal>generate</goal>
                             </goals>
                             <configuration>
-                                <inputSpec>src/main/endpoints/accounts.yaml</inputSpec>
+                                <inputSpec>src/main/api/accounts.yaml</inputSpec>
                                 <generateSupportingFiles>true</generateSupportingFiles>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.account.model</modelPackage>
                                 <apiPackage>${baseLibPackage}.account</apiPackage>
-                                <language>java</language>
+                                <generatorName>java</generatorName>
                                 <library>google-api-client</library>
                                 <configOptions>
                                     <dateLibrary>java8</dateLibrary>
@@ -87,13 +87,13 @@
                                 <goal>generate</goal>
                             </goals>
                             <configuration>
-                                <inputSpec>src/main/endpoints/counterparties.yaml</inputSpec>
+                                <inputSpec>src/main/api/counterparties.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.counterparty.model</modelPackage>
                                 <apiPackage>${baseLibPackage}.counterparty</apiPackage>
-                                <language>java</language>
+                                <generatorName>java</generatorName>
                                 <library>google-api-client</library>
                                 <configOptions>
                                     <dateLibrary>java8</dateLibrary>
@@ -106,13 +106,13 @@
                                 <goal>generate</goal>
                             </goals>
                             <configuration>
-                                <inputSpec>src/main/endpoints/drafts.yaml</inputSpec>
+                                <inputSpec>src/main/api/drafts.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.draft.model</modelPackage>
                                 <apiPackage>${baseLibPackage}.draft</apiPackage>
-                                <language>java</language>
+                                <generatorName>java</generatorName>
                                 <library>google-api-client</library>
                                 <configOptions>
                                     <dateLibrary>java8</dateLibrary>
@@ -125,13 +125,13 @@
                                 <goal>generate</goal>
                             </goals>
                             <configuration>
-                                <inputSpec>src/main/endpoints/exchanges.yaml</inputSpec>
+                                <inputSpec>src/main/api/exchanges.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.exchange.model</modelPackage>
                                 <apiPackage>${baseLibPackage}.exchange</apiPackage>
-                                <language>java</language>
+                                <generatorName>java</generatorName>
                                 <library>google-api-client</library>
                                 <configOptions>
                                     <dateLibrary>java8</dateLibrary>
@@ -144,13 +144,13 @@
                                 <goal>generate</goal>
                             </goals>
                             <configuration>
-                                <inputSpec>src/main/endpoints/transactions.yaml</inputSpec>
+                                <inputSpec>src/main/api/transactions.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.transaction.model</modelPackage>
                                 <apiPackage>${baseLibPackage}.transaction</apiPackage>
-                                <language>java</language>
+                                <generatorName>java</generatorName>
                                 <library>google-api-client</library>
                                 <configOptions>
                                     <dateLibrary>java8</dateLibrary>
@@ -163,13 +163,13 @@
                                 <goal>generate</goal>
                             </goals>
                             <configuration>
-                                <inputSpec>src/main/endpoints/webhooks.yaml</inputSpec>
+                                <inputSpec>src/main/api/webhooks.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.webhook.model</modelPackage>
                                 <apiPackage>${baseLibPackage}.webhook</apiPackage>
-                                <language>java</language>
+                                <generatorName>java</generatorName>
                                 <library>google-api-client</library>
                                 <configOptions>
                                     <dateLibrary>java8</dateLibrary>
