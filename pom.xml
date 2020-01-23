@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020 Comvai, s.r.o.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>org.ctoolkit.maven</groupId>
+        <artifactId>ctoolkit-public</artifactId>
+        <version>2</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>biz.turnonline.ecosystem</groupId>
+    <artifactId>turnonline-revolut-business-client</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Revolut for Business Open API Java Client</name>
+    <description>
+        TurnOnline.biz Ecosystem Revolut for Business Open API Java client implementation based on CtoolkiT REST Facade API
+    </description>
+
+    <scm>
+        <connection>scm:git:[fetch=]git@github.com:turnonline/revolut-business-client.git</connection>
+        <developerConnection>scm:git:[push=]git@github.com:turnonline/revolut-business-client.git</developerConnection>
+        <url>https://github.com/turnonline/revolut-business-client</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/turnonline/revolut-business-client/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <name>Aurel Medvegy</name>
+            <id>medvegy</id>
+            <email>medvegy@turnonline.biz</email>
+        </developer>
+    </developers>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>4.2.2</version>
+                    <executions>
+                        <execution>
+                            <id>accounts</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>src/main/endpoints/accounts.yaml</inputSpec>
+                                <generateSupportingFiles>true</generateSupportingFiles>
+                                <generateApiTests>false</generateApiTests>
+                                <generateModelTests>false</generateModelTests>
+                                <modelPackage>${baseLibPackage}.account.model</modelPackage>
+                                <apiPackage>${baseLibPackage}.account</apiPackage>
+                                <language>java</language>
+                                <library>google-api-client</library>
+                                <configOptions>
+                                    <dateLibrary>java8</dateLibrary>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>counterparties</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>src/main/endpoints/counterparties.yaml</inputSpec>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApiTests>false</generateApiTests>
+                                <generateModelTests>false</generateModelTests>
+                                <modelPackage>${baseLibPackage}.counterparty.model</modelPackage>
+                                <apiPackage>${baseLibPackage}.counterparty</apiPackage>
+                                <language>java</language>
+                                <library>google-api-client</library>
+                                <configOptions>
+                                    <dateLibrary>java8</dateLibrary>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>drafts</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>src/main/endpoints/drafts.yaml</inputSpec>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApiTests>false</generateApiTests>
+                                <generateModelTests>false</generateModelTests>
+                                <modelPackage>${baseLibPackage}.draft.model</modelPackage>
+                                <apiPackage>${baseLibPackage}.draft</apiPackage>
+                                <language>java</language>
+                                <library>google-api-client</library>
+                                <configOptions>
+                                    <dateLibrary>java8</dateLibrary>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>exchanges</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>src/main/endpoints/exchanges.yaml</inputSpec>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApiTests>false</generateApiTests>
+                                <generateModelTests>false</generateModelTests>
+                                <modelPackage>${baseLibPackage}.exchange.model</modelPackage>
+                                <apiPackage>${baseLibPackage}.exchange</apiPackage>
+                                <language>java</language>
+                                <library>google-api-client</library>
+                                <configOptions>
+                                    <dateLibrary>java8</dateLibrary>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>transactions</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>src/main/endpoints/transactions.yaml</inputSpec>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApiTests>false</generateApiTests>
+                                <generateModelTests>false</generateModelTests>
+                                <modelPackage>${baseLibPackage}.transaction.model</modelPackage>
+                                <apiPackage>${baseLibPackage}.transaction</apiPackage>
+                                <language>java</language>
+                                <library>google-api-client</library>
+                                <configOptions>
+                                    <dateLibrary>java8</dateLibrary>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>webhooks</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>src/main/endpoints/webhooks.yaml</inputSpec>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApiTests>false</generateApiTests>
+                                <generateModelTests>false</generateModelTests>
+                                <modelPackage>${baseLibPackage}.webhook.model</modelPackage>
+                                <apiPackage>${baseLibPackage}.webhook</apiPackage>
+                                <language>java</language>
+                                <library>google-api-client</library>
+                                <configOptions>
+                                    <dateLibrary>java8</dateLibrary>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.ctoolkit.maven</groupId>
+                <artifactId>ctoolkit-library-bom</artifactId>
+                <version>${ctoolkit-library-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.ctoolkit.restapi</groupId>
+            <artifactId>ctoolkit-rest-facade-api</artifactId>
+            <version>${ctoolkit-rest-facade-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ctoolkit.restapi</groupId>
+            <artifactId>ctoolkit-rest-facade-adapter</artifactId>
+            <version>${ctoolkit-rest-facade-adapter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <!-- start:google-api-client -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-common</artifactId>
+            <version>2.30</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <!-- end:google-api-client -->
+
+        <dependency>
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>${jmockit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <ctoolkit-library-bom.version>13-20200123.052512-1</ctoolkit-library-bom.version>
+        <ctoolkit-rest-facade-api.version>0.28</ctoolkit-rest-facade-api.version>
+        <ctoolkit-rest-facade-adapter.version>0.35</ctoolkit-rest-facade-adapter.version>
+        <jmockit.version>1.41</jmockit.version>
+        <!-- jmockit settings for OpenJDK otherwise throws 'IllegalStateException: To run on OpenJDK 64-Bit Server VM use -javaagent..' -->
+        <jmockit.setting>
+            -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+        </jmockit.setting>
+        <baseLibPackage>biz.turnonline.ecosystem.revolut.business</baseLibPackage>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>gen-client</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.openapitools</groupId>
+                        <artifactId>openapi-generator-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
