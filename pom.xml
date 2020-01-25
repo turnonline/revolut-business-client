@@ -259,7 +259,19 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.0.0</version>
+            <version>7.1.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.truth</groupId>
+            <artifactId>truth</artifactId>
+            <version>1.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.ctoolkit.restapi</groupId>
+            <artifactId>ctoolkit-rest-facade-appengine</artifactId>
+            <version>${ctoolkit-rest-facade-adapter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
