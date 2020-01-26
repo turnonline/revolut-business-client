@@ -23,6 +23,4 @@ public class RevolutBusinessClientModule
         mapBinder = MapBinder.newMapBinder( binder(), String.class, ClientApi.class );
         mapBinder.addBinding( API_PREFIX ).to( RevolutBusinessProvider.class );
     }
-
-
 }

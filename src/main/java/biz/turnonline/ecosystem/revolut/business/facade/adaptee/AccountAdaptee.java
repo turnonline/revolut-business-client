@@ -12,6 +12,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Provider;
+import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.Map;
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
+@Singleton
 public class AccountAdaptee
         extends AbstractFacadeAdaptee
         implements GetExecutorAdaptee<Account>, ListExecutorAdaptee<Account>
@@ -52,8 +54,7 @@ public class AccountAdaptee
     @Override
     public GetFacadeRequest<ListArray> prepareList( @Nullable Identifier parentKey )
     {
-        String uriTemplate = formatUriTemplate( "accounts", null );
-        return new GetFacadeRequest<>( client(), uriTemplate, ListArray.class );
+        return buildGetRequest( "accounts", parentKey, ListArray.class );
     }
 
     @Override
@@ -73,6 +74,6 @@ public class AccountAdaptee
     public static class ListArray
             extends ArrayList<Account>
     {
-
+        private static final long serialVersionUID = 1L;
     }
 }

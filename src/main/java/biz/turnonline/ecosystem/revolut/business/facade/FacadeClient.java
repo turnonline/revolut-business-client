@@ -1,11 +1,15 @@
 package biz.turnonline.ecosystem.revolut.business.facade;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.googleapis.services.AbstractGoogleClient;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
+import com.google.api.client.util.ObjectParser;
 
 import javax.annotation.Nonnull;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The client thread-safe implementation based on {@link AbstractGoogleClient}
@@ -16,6 +20,8 @@ import javax.annotation.Nonnull;
 public class FacadeClient
         extends AbstractGoogleClient
 {
+    private final ObjectMapper mapper;
+
     /**
      * Constructs facade client.
      *
@@ -24,6 +30,17 @@ public class FacadeClient
     protected FacadeClient( Builder builder )
     {
         super( builder );
+        this.mapper = checkNotNull( builder.mapper, "Object mapper can't be null" );
+    }
+
+    /**
+     * Returns the ObjectMapper that's being used to serialize payload to JSON and vise versa.
+     *
+     * @return the JSON serializer
+     */
+    public ObjectMapper getMapper()
+    {
+        return mapper;
     }
 
     /**
@@ -36,6 +53,7 @@ public class FacadeClient
     public static final class Builder
             extends AbstractGoogleClient.Builder
     {
+        ObjectMapper mapper;
 
         /**
          * Returns an instance of a new builder.
@@ -50,9 +68,12 @@ public class FacadeClient
          *                  </li>
          *                  </ul>
          */
-        public Builder( @Nonnull HttpTransport transport, @Nonnull String rootUrl, @Nonnull String servicePath )
+        public Builder( @Nonnull HttpTransport transport,
+                        @Nonnull String rootUrl,
+                        @Nonnull String servicePath,
+                        @Nonnull ObjectParser parser )
         {
-            super( transport, rootUrl, servicePath, new AdapteeObjectParser(), null );
+            super( transport, rootUrl, servicePath, parser, null );
         }
 
         /**
@@ -62,6 +83,14 @@ public class FacadeClient
         public FacadeClient build()
         {
             return new FacadeClient( this );
+        }
+
+        /**
+         * Sets the ObjectMapper that will be used to serialize payload to JSON and vise versa.
+         */
+        public void setMapper( ObjectMapper mapper )
+        {
+            this.mapper = mapper;
         }
 
         @Override

@@ -6,7 +6,7 @@ import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import javax.annotation.Nonnull;
 
 /**
- * The common GET Facade request implementation.
+ * The common {@code GET} Facade request implementation.
  *
  * @param <T> the type of the class to deserialize JSON response
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
