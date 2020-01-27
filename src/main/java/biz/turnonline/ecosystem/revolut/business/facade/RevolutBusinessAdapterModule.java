@@ -3,8 +3,12 @@ package biz.turnonline.ecosystem.revolut.business.facade;
 import biz.turnonline.ecosystem.revolut.business.account.model.Account;
 import biz.turnonline.ecosystem.revolut.business.counterparty.model.Counterparty;
 import biz.turnonline.ecosystem.revolut.business.counterparty.model.CreateCounterpartyRequest;
+import biz.turnonline.ecosystem.revolut.business.draft.model.CreatePaymentDraftRequest;
+import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentDraftResponse;
+import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentOrderInfo;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.AccountAdaptee;
-import biz.turnonline.ecosystem.revolut.business.facade.adaptee.CounterpartiesAdaptee;
+import biz.turnonline.ecosystem.revolut.business.facade.adaptee.CounterpartyAdaptee;
+import biz.turnonline.ecosystem.revolut.business.facade.adaptee.PaymentDraftAdaptee;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import org.ctoolkit.restapi.client.adaptee.DeleteExecutorAdaptee;
@@ -35,18 +39,35 @@ public class RevolutBusinessAdapterModule
         // Counterparties endpoint
         bind( new TypeLiteral<InsertExecutorAdaptee<CreateCounterpartyRequest>>()
         {
-        } ).to( CounterpartiesAdaptee.class );
+        } ).to( CounterpartyAdaptee.class );
 
         bind( new TypeLiteral<GetExecutorAdaptee<Counterparty>>()
         {
-        } ).to( CounterpartiesAdaptee.class );
+        } ).to( CounterpartyAdaptee.class );
 
         bind( new TypeLiteral<ListExecutorAdaptee<Counterparty>>()
         {
-        } ).to( CounterpartiesAdaptee.class );
+        } ).to( CounterpartyAdaptee.class );
 
         bind( new TypeLiteral<DeleteExecutorAdaptee<Counterparty>>()
         {
-        } ).to( CounterpartiesAdaptee.class );
+        } ).to( CounterpartyAdaptee.class );
+
+        // Payment drafts endpoint
+        bind( new TypeLiteral<InsertExecutorAdaptee<CreatePaymentDraftRequest>>()
+        {
+        } ).to( PaymentDraftAdaptee.class );
+
+        bind( new TypeLiteral<GetExecutorAdaptee<PaymentDraftResponse>>()
+        {
+        } ).to( PaymentDraftAdaptee.class );
+
+        bind( new TypeLiteral<ListExecutorAdaptee<PaymentOrderInfo>>()
+        {
+        } ).to( PaymentDraftAdaptee.class );
+
+        bind( new TypeLiteral<DeleteExecutorAdaptee<PaymentDraftResponse>>()
+        {
+        } ).to( PaymentDraftAdaptee.class );
     }
 }

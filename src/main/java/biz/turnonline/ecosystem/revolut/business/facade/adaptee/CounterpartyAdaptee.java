@@ -30,13 +30,13 @@ import java.util.Map;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 @Singleton
-public class CounterpartiesAdaptee
+public class CounterpartyAdaptee
         extends AbstractFacadeAdaptee
         implements GetExecutorAdaptee<Counterparty>, InsertExecutorAdaptee<CreateCounterpartyRequest>,
         ListExecutorAdaptee<Counterparty>, DeleteExecutorAdaptee<Counterparty>
 {
     @Inject
-    public CounterpartiesAdaptee( Provider<FacadeClient> client )
+    public CounterpartyAdaptee( Provider<FacadeClient> client )
     {
         super( client );
     }

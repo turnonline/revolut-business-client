@@ -4,6 +4,12 @@ import biz.turnonline.ecosystem.revolut.business.account.model.Account;
 import biz.turnonline.ecosystem.revolut.business.counterparty.model.Counterparty;
 import biz.turnonline.ecosystem.revolut.business.counterparty.model.CreateCounterpartyRequest;
 import biz.turnonline.ecosystem.revolut.business.counterparty.model.ProfileType;
+import biz.turnonline.ecosystem.revolut.business.draft.model.CreatePaymentDraftRequest;
+import biz.turnonline.ecosystem.revolut.business.draft.model.CreatePaymentDraftResponse;
+import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentDraftResponse;
+import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentOrderInfo;
+import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentReceiver;
+import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentRequest;
 import org.ctoolkit.restapi.client.RestFacade;
 import org.ctoolkit.restapi.client.appengine.CtoolkitRestFacadeAppEngineModule;
 import org.ctoolkit.restapi.client.appengine.CtoolkitRestFacadeDefaultOrikaModule;
@@ -11,6 +17,7 @@ import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.ConsoleHandler;
@@ -47,7 +54,11 @@ public class RevolutBusinessClientIT
 
     }
 
+    private UUID mainAccountId;
+
     private UUID counterpartyId;
+
+    private UUID paymentDraft;
 
     @Inject
     private RestFacade facade;
@@ -67,12 +78,14 @@ public class RevolutBusinessClientIT
         assertWithMessage( "Revolut list of accounts" )
                 .that( list )
                 .hasSize( 3 );
+
+        mainAccountId = list.get( 0 ).getId();
     }
 
-    @Test
+    @Test( dependsOnMethods = "accounts" )
     public void getAccount()
     {
-        String identifier = "";
+        String identifier = mainAccountId.toString();
         Account account = facade.get( Account.class )
                 .identifiedBy( identifier )
                 .authBy( TOKEN )
@@ -131,7 +144,7 @@ public class RevolutBusinessClientIT
 
         assertWithMessage( "Revolut list of counterparties" )
                 .that( list )
-                .hasSize( 2 );
+                .isNotEmpty();
     }
 
     @Test( dependsOnMethods = "counterparties" )
@@ -152,15 +165,96 @@ public class RevolutBusinessClientIT
                 .isNotNull();
 
         assertWithMessage( "Revolut single counterparty id" )
-                .that( counterparty.getId().toString() )
-                .isEqualTo( counterpartyId.toString() );
+                .that( counterparty.getId() )
+                .isEqualTo( counterpartyId );
     }
 
-    @Test( dependsOnMethods = "getCounterparty" )
+    @Test( dependsOnMethods = "deletePaymentDraft" )
     public void deleteCounterparty()
     {
         facade.delete( Counterparty.class )
                 .identifiedBy( counterpartyId.toString() )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+    }
+
+    @Test
+    public void createPaymentDraft()
+    {
+        PaymentRequest payment = new PaymentRequest();
+        // Revolut Main account
+        payment.amount( 1.0 )
+                .accountId( mainAccountId.toString() )
+                .currency( "EUR" )
+                .reference( "Payment for tests" );
+
+        PaymentReceiver receiver = new PaymentReceiver();
+        receiver.counterpartyId( UUID.fromString( counterpartyId.toString() ) );
+        payment.setReceiver( receiver );
+
+        CreatePaymentDraftRequest request = new CreatePaymentDraftRequest()
+                .title( "Test Payment" )
+                .scheduleFor( LocalDate.now().plusDays( 7 ) )
+                .addPaymentsItem( payment );
+
+        CreatePaymentDraftResponse response = facade.insert( request )
+                .answerBy( CreatePaymentDraftResponse.class )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut payment draft" )
+                .that( response )
+                .isNotNull();
+
+        paymentDraft = response.getId();
+    }
+
+    @Test( dependsOnMethods = "createPaymentDraft" )
+    public void getPaymentDraft()
+    {
+        PaymentDraftResponse draft = facade.get( PaymentDraftResponse.class )
+                .identifiedBy( paymentDraft.toString() )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut single payment draft" )
+                .that( draft )
+                .isNotNull();
+
+        assertWithMessage( "Revolut single payment draft's payments" )
+                .that( draft.getPayments() )
+                .isNotNull();
+
+        assertWithMessage( "Revolut single payment draft's payments" )
+                .that( draft.getPayments() )
+                .isNotEmpty();
+    }
+
+    @Test( dependsOnMethods = "getPaymentDraft" )
+    public void paymentDrafts()
+    {
+        List<PaymentOrderInfo> list = facade.list( PaymentOrderInfo.class )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut list of payment drafts" )
+                .that( list )
+                .isNotNull();
+
+        assertWithMessage( "Revolut list of payment drafts" )
+                .that( list )
+                .hasSize( 1 );
+    }
+
+    @Test( dependsOnMethods = "paymentDrafts" )
+    public void deletePaymentDraft()
+    {
+        facade.delete( PaymentDraftResponse.class )
+                .identifiedBy( paymentDraft.toString() )
                 .authBy( TOKEN )
                 .bearer()
                 .finish();
