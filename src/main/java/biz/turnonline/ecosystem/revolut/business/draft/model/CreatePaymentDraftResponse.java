@@ -18,8 +18,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * CreatePaymentDraftResponse
@@ -32,10 +32,10 @@ public class CreatePaymentDraftResponse
 {
     public static final String JSON_PROPERTY_ID = "id";
 
-    private BigDecimal id;
+    private UUID id;
 
 
-    public CreatePaymentDraftResponse id( BigDecimal id )
+    public CreatePaymentDraftResponse id( UUID id )
     {
 
         this.id = id;
@@ -51,13 +51,13 @@ public class CreatePaymentDraftResponse
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
 
-    public BigDecimal getId()
+    public UUID getId()
     {
         return id;
     }
 
 
-    public void setId( BigDecimal id )
+    public void setId( UUID id )
     {
         this.id = id;
     }

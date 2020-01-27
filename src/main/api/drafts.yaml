@@ -167,7 +167,7 @@ components:
       properties:
         id:
           type: string
-          format: number
+          format: uuid
     PaymentDraftsResponse:
       type: object
       required:
