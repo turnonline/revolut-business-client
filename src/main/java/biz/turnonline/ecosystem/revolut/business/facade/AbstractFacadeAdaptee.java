@@ -100,7 +100,7 @@ public class AbstractFacadeAdaptee
         path = path.endsWith( "/" ) ? path.substring( 0, path.length() - 1 ) : path;
         String controller = leaf != null && leaf.hasController() ? leaf.getController() : null;
         String appendix = controller != null ? path + "/" + controller : "";
-        String templateUrl = client.get().getBaseUrl() + path + appendix;
+        String templateUrl = client().getBaseUrl() + path + appendix;
 
         List<String> arguments = new ArrayList<>();
         while ( identifier != null )

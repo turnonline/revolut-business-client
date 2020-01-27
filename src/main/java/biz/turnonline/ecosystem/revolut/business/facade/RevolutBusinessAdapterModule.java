@@ -6,8 +6,11 @@ import biz.turnonline.ecosystem.revolut.business.counterparty.model.CreateCounte
 import biz.turnonline.ecosystem.revolut.business.draft.model.CreatePaymentDraftRequest;
 import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentDraftResponse;
 import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentOrderInfo;
+import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRateResponse;
+import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRequest;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.AccountAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.CounterpartyAdaptee;
+import biz.turnonline.ecosystem.revolut.business.facade.adaptee.ExchangeAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.PaymentDraftAdaptee;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
@@ -69,5 +72,14 @@ public class RevolutBusinessAdapterModule
         bind( new TypeLiteral<DeleteExecutorAdaptee<PaymentDraftResponse>>()
         {
         } ).to( PaymentDraftAdaptee.class );
+
+        // Payment drafts endpoint
+        bind( new TypeLiteral<InsertExecutorAdaptee<ExchangeRequest>>()
+        {
+        } ).to( ExchangeAdaptee.class );
+
+        bind( new TypeLiteral<GetExecutorAdaptee<ExchangeRateResponse>>()
+        {
+        } ).to( ExchangeAdaptee.class );
     }
 }

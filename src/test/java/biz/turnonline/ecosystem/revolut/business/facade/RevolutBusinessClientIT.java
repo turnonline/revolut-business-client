@@ -10,6 +10,10 @@ import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentDraftRespons
 import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentOrderInfo;
 import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentReceiver;
 import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentRequest;
+import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangePart;
+import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRateResponse;
+import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRequest;
+import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeResponse;
 import org.ctoolkit.restapi.client.RestFacade;
 import org.ctoolkit.restapi.client.appengine.CtoolkitRestFacadeAppEngineModule;
 import org.ctoolkit.restapi.client.appengine.CtoolkitRestFacadeDefaultOrikaModule;
@@ -18,7 +22,9 @@ import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
@@ -258,5 +264,52 @@ public class RevolutBusinessClientIT
                 .authBy( TOKEN )
                 .bearer()
                 .finish();
+    }
+
+    @Test
+    public void exchangeRate()
+    {
+        Map<String, Object> query = new HashMap<>();
+        query.put( "from", "EUR" );
+        query.put( "to", "USD" );
+        query.put( "amount", 10.0 );
+
+        ExchangeRateResponse response = facade.get( ExchangeRateResponse.class )
+                .identifiedBy( 1L )
+                .authBy( TOKEN )
+                .bearer()
+                .finish( query );
+
+        assertWithMessage( "Revolut exchange rate" )
+                .that( response )
+                .isNotNull();
+    }
+
+    @Test
+    public void exchange()
+    {
+        ExchangePart from = new ExchangePart();
+        from.accountId( UUID.fromString( "sandbox-acc1" ) );
+        from.amount( 10.0 );
+        from.currency( "GBP" );
+
+        ExchangePart to = new ExchangePart();
+        to.accountId( UUID.fromString( "sandbox-acc2" ) );
+        to.currency( "EUR" );
+
+        ExchangeRequest exchange = new ExchangeRequest();
+        exchange.from( from );
+        exchange.to( to );
+        exchange.setRequestId( "b91b0454-413c-11ea-b77f-2e728ce88125" );
+
+        ExchangeResponse response = facade.insert( exchange )
+                .answerBy( ExchangeResponse.class )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut exchange response" )
+                .that( response )
+                .isNotNull();
     }
 }
