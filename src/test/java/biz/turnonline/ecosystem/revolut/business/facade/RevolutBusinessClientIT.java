@@ -14,10 +14,14 @@ import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangePart;
 import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRateResponse;
 import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRequest;
 import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeResponse;
+import biz.turnonline.ecosystem.revolut.business.transaction.model.Transaction;
+import biz.turnonline.ecosystem.revolut.business.transaction.model.TransferRequest;
+import biz.turnonline.ecosystem.revolut.business.transaction.model.TransferResponse;
 import org.ctoolkit.restapi.client.RestFacade;
 import org.ctoolkit.restapi.client.appengine.CtoolkitRestFacadeAppEngineModule;
 import org.ctoolkit.restapi.client.appengine.CtoolkitRestFacadeDefaultOrikaModule;
 import org.testng.annotations.Guice;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
@@ -62,9 +66,17 @@ public class RevolutBusinessClientIT
 
     private UUID mainAccountId;
 
+    private UUID euAccountId;
+
     private UUID counterpartyId;
 
+    private UUID counterpartyAccountId;
+
     private UUID paymentDraft;
+
+    private String transactionId;
+
+    private String paymentId;
 
     @Inject
     private RestFacade facade;
@@ -83,9 +95,17 @@ public class RevolutBusinessClientIT
 
         assertWithMessage( "Revolut list of accounts" )
                 .that( list )
-                .hasSize( 3 );
+                .isNotEmpty();
 
         mainAccountId = list.get( 0 ).getId();
+
+        for ( Account next : list )
+        {
+            if ( "EUR".equals( next.getCurrency() ) )
+            {
+                euAccountId = next.getId();
+            }
+        }
     }
 
     @Test( dependsOnMethods = "accounts" )
@@ -111,7 +131,7 @@ public class RevolutBusinessClientIT
                 .isEqualTo( identifier );
     }
 
-    @Test
+    @Test( dependsOnMethods = "getAccount" )
     public void createCounterparty()
     {
         CreateCounterpartyRequest request = new CreateCounterpartyRequest();
@@ -134,6 +154,7 @@ public class RevolutBusinessClientIT
                 .isNotNull();
 
         counterpartyId = counterparty.getId();
+        counterpartyAccountId = counterparty.getAccounts().get( 0 ).getId();
     }
 
     @Test( dependsOnMethods = "createCounterparty" )
@@ -175,7 +196,10 @@ public class RevolutBusinessClientIT
                 .isEqualTo( counterpartyId );
     }
 
-    @Test( dependsOnMethods = "deletePaymentDraft" )
+    /**
+     * Make sure it's called as a last test because it's used by other tests.
+     */
+    @Test( dependsOnMethods = "pay" )
     public void deleteCounterparty()
     {
         facade.delete( Counterparty.class )
@@ -185,7 +209,7 @@ public class RevolutBusinessClientIT
                 .finish();
     }
 
-    @Test
+    @Test( dependsOnMethods = "getCounterparty" )
     public void createPaymentDraft()
     {
         PaymentRequest payment = new PaymentRequest();
@@ -253,7 +277,7 @@ public class RevolutBusinessClientIT
 
         assertWithMessage( "Revolut list of payment drafts" )
                 .that( list )
-                .hasSize( 1 );
+                .isNotEmpty();
     }
 
     @Test( dependsOnMethods = "paymentDrafts" )
@@ -300,7 +324,7 @@ public class RevolutBusinessClientIT
         ExchangeRequest exchange = new ExchangeRequest();
         exchange.from( from );
         exchange.to( to );
-        exchange.setRequestId( "b91b0454-413c-11ea-b77f-2e728ce88125" );
+        exchange.setRequestId( UUID.randomUUID().toString() );
 
         ExchangeResponse response = facade.insert( exchange )
                 .answerBy( ExchangeResponse.class )
@@ -311,5 +335,124 @@ public class RevolutBusinessClientIT
         assertWithMessage( "Revolut exchange response" )
                 .that( response )
                 .isNotNull();
+    }
+
+    @Test( dependsOnMethods = "deletePaymentDraft" )
+    public void pay()
+    {
+        biz.turnonline.ecosystem.revolut.business.transaction.model.PaymentReceiver receiver;
+        receiver = new biz.turnonline.ecosystem.revolut.business.transaction.model.PaymentReceiver();
+        receiver.counterpartyId( counterpartyId );
+
+        biz.turnonline.ecosystem.revolut.business.transaction.model.PaymentRequest payment;
+        payment = new biz.turnonline.ecosystem.revolut.business.transaction.model.PaymentRequest();
+        payment.requestId( UUID.randomUUID().toString() )
+                // in case the scheduleFor is provided fails with error:
+                // 400 Bad Request {"message":"Required 'profile id' is missing","code":2101}
+                //.scheduleFor( LocalDate.now().plusDays( 1 ) )
+                .accountId( mainAccountId )
+                .receiver( receiver )
+                .currency( "EUR" )
+                .amount( 10.0 )
+                .reference( "(Not) scheduled payment" );
+
+        TransferResponse response = facade.insert( payment )
+                .answerBy( TransferResponse.class )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut transfer response" )
+                .that( response )
+                .isNotNull();
+
+        paymentId = response.getId();
+    }
+
+    /**
+     * Ignored because of error: 400 Bad Request No pocket found for id
+     */
+    @Test( dependsOnMethods = "pay" )
+    @Ignore
+    public void transfer()
+    {
+        TransferRequest transfer = new TransferRequest();
+        transfer.amount( 15.0 )
+                .currency( "EUR" )
+                .reference( "Test transfer" )
+                .sourceAccountId( euAccountId )
+                .targetAccountId( counterpartyAccountId )
+                .requestId( UUID.randomUUID().toString() );
+
+        TransferResponse response = facade.insert( transfer )
+                .answerBy( TransferResponse.class )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut transfer" )
+                .that( response )
+                .isNotNull();
+    }
+
+    @Test( dependsOnMethods = "pay" )
+    public void transactions()
+    {
+        List<Transaction> transactions = facade.list( Transaction.class )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut list of transactions" )
+                .that( transactions )
+                .isNotNull();
+
+        assertWithMessage( "Revolut list of transactions" )
+                .that( transactions )
+                .isNotEmpty();
+
+        transactionId = transactions.get( 0 ).getId();
+    }
+
+    @Test( dependsOnMethods = "transactions" )
+    public void getTransaction()
+    {
+        Transaction transaction = facade.get( Transaction.class )
+                .identifiedBy( transactionId )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut single transaction" )
+                .that( transaction )
+                .isNotNull();
+    }
+
+    @Test( dependsOnMethods = "getTransaction" )
+    public void getPayment()
+    {
+        Transaction response = facade.get( Transaction.class )
+                .identifiedBy( paymentId )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut payment" )
+                .that( response )
+                .isNotNull();
+    }
+
+    /**
+     * Ignored because of 'pay' method can't be scheduled and only a scheduled payment might be canceled.
+     */
+    @Test( dependsOnMethods = "transfer" )
+    @Ignore
+    public void cancelPayment()
+    {
+        facade.delete( Transaction.class )
+                .identifiedBy( paymentId )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
     }
 }

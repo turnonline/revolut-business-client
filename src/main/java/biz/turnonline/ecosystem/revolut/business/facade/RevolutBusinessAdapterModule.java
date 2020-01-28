@@ -11,7 +11,12 @@ import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRequest;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.AccountAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.CounterpartyAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.ExchangeAdaptee;
+import biz.turnonline.ecosystem.revolut.business.facade.adaptee.PaymentAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.PaymentDraftAdaptee;
+import biz.turnonline.ecosystem.revolut.business.facade.adaptee.TransferAdaptee;
+import biz.turnonline.ecosystem.revolut.business.transaction.model.PaymentRequest;
+import biz.turnonline.ecosystem.revolut.business.transaction.model.Transaction;
+import biz.turnonline.ecosystem.revolut.business.transaction.model.TransferRequest;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import org.ctoolkit.restapi.client.adaptee.DeleteExecutorAdaptee;
@@ -73,7 +78,7 @@ public class RevolutBusinessAdapterModule
         {
         } ).to( PaymentDraftAdaptee.class );
 
-        // Payment drafts endpoint
+        // Exchange endpoint
         bind( new TypeLiteral<InsertExecutorAdaptee<ExchangeRequest>>()
         {
         } ).to( ExchangeAdaptee.class );
@@ -81,5 +86,27 @@ public class RevolutBusinessAdapterModule
         bind( new TypeLiteral<GetExecutorAdaptee<ExchangeRateResponse>>()
         {
         } ).to( ExchangeAdaptee.class );
+
+        // Payment endpoint
+        bind( new TypeLiteral<InsertExecutorAdaptee<PaymentRequest>>()
+        {
+        } ).to( PaymentAdaptee.class );
+
+        bind( new TypeLiteral<GetExecutorAdaptee<Transaction>>()
+        {
+        } ).to( PaymentAdaptee.class );
+
+        bind( new TypeLiteral<ListExecutorAdaptee<Transaction>>()
+        {
+        } ).to( PaymentAdaptee.class );
+
+        bind( new TypeLiteral<DeleteExecutorAdaptee<Transaction>>()
+        {
+        } ).to( PaymentAdaptee.class );
+
+        // Transfer endpoint
+        bind( new TypeLiteral<InsertExecutorAdaptee<TransferRequest>>()
+        {
+        } ).to( TransferAdaptee.class );
     }
 }
