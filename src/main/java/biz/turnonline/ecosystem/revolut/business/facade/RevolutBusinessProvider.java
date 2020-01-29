@@ -13,7 +13,6 @@ import com.google.api.client.json.JsonFactory;
 import com.google.common.base.Strings;
 import org.ctoolkit.restapi.client.adapter.ClientApiProvider;
 import org.ctoolkit.restapi.client.adapter.GoogleApiProxyFactory;
-import org.openapitools.jackson.nullable.JsonNullableModule;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -39,8 +38,7 @@ public class RevolutBusinessProvider
             .disable( SerializationFeature.WRITE_DATES_AS_TIMESTAMPS )
             .setDateFormat( new RFC3339() )
             .setSerializationInclusion( JsonInclude.Include.NON_NULL )
-            .registerModule( new JavaTimeModule() )
-            .registerModule( new JsonNullableModule() );
+            .registerModule( new JavaTimeModule() );
 
     @Inject
     public RevolutBusinessProvider( @Nonnull GoogleApiProxyFactory factory )

@@ -69,7 +69,8 @@
                             </goals>
                             <configuration>
                                 <inputSpec>src/main/api/accounts.yaml</inputSpec>
-                                <generateSupportingFiles>true</generateSupportingFiles>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApis>false</generateApis>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.account.model</modelPackage>
@@ -89,6 +90,7 @@
                             <configuration>
                                 <inputSpec>src/main/api/counterparties.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApis>false</generateApis>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.counterparty.model</modelPackage>
@@ -108,6 +110,7 @@
                             <configuration>
                                 <inputSpec>src/main/api/drafts.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApis>false</generateApis>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.draft.model</modelPackage>
@@ -127,6 +130,7 @@
                             <configuration>
                                 <inputSpec>src/main/api/exchanges.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApis>false</generateApis>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.exchange.model</modelPackage>
@@ -146,6 +150,7 @@
                             <configuration>
                                 <inputSpec>src/main/api/transactions.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApis>false</generateApis>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.transaction.model</modelPackage>
@@ -165,6 +170,7 @@
                             <configuration>
                                 <inputSpec>src/main/api/webhooks.yaml</inputSpec>
                                 <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateApis>false</generateApis>
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <modelPackage>${baseLibPackage}.webhook.model</modelPackage>
@@ -221,16 +227,6 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>1.5.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-common</artifactId>
-            <version>2.30</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>jackson-databind-nullable</artifactId>
-            <version>0.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
