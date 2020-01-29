@@ -17,6 +17,7 @@ import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeResponse
 import biz.turnonline.ecosystem.revolut.business.transaction.model.Transaction;
 import biz.turnonline.ecosystem.revolut.business.transaction.model.TransferRequest;
 import biz.turnonline.ecosystem.revolut.business.transaction.model.TransferResponse;
+import biz.turnonline.ecosystem.revolut.business.webhook.model.Webhook;
 import org.ctoolkit.restapi.client.RestFacade;
 import org.ctoolkit.restapi.client.appengine.CtoolkitRestFacadeAppEngineModule;
 import org.ctoolkit.restapi.client.appengine.CtoolkitRestFacadeDefaultOrikaModule;
@@ -25,6 +26,8 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -77,6 +80,8 @@ public class RevolutBusinessClientIT
     private String transactionId;
 
     private String paymentId;
+
+    private URI webhookUri;
 
     @Inject
     private RestFacade facade;
@@ -451,6 +456,46 @@ public class RevolutBusinessClientIT
     {
         facade.delete( Transaction.class )
                 .identifiedBy( paymentId )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+    }
+
+    @Test
+    public void createWebhook() throws URISyntaxException
+    {
+        webhookUri = new URI( "https://payment.turnonline.biz/webhook" );
+        Webhook webhook = new Webhook().url( webhookUri );
+
+        facade.insert( webhook )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+    }
+
+    @Test( dependsOnMethods = "createWebhook" )
+    public void getWebhook()
+    {
+        Webhook response = facade.get( Webhook.class )
+                .identifiedBy( 1L )
+                .authBy( TOKEN )
+                .bearer()
+                .finish();
+
+        assertWithMessage( "Revolut webhook" )
+                .that( response )
+                .isNotNull();
+
+        assertWithMessage( "Revolut webhook" )
+                .that( response.getUrl() )
+                .isEqualTo( webhookUri );
+    }
+
+    @Test( dependsOnMethods = "getWebhook" )
+    public void deleteWebhook()
+    {
+        facade.delete( Webhook.class )
+                .identifiedBy( 1L )
                 .authBy( TOKEN )
                 .bearer()
                 .finish();

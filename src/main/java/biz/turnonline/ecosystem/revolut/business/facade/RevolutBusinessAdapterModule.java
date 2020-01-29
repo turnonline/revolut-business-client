@@ -14,9 +14,11 @@ import biz.turnonline.ecosystem.revolut.business.facade.adaptee.ExchangeAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.PaymentAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.PaymentDraftAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.TransferAdaptee;
+import biz.turnonline.ecosystem.revolut.business.facade.adaptee.WebhookAdaptee;
 import biz.turnonline.ecosystem.revolut.business.transaction.model.PaymentRequest;
 import biz.turnonline.ecosystem.revolut.business.transaction.model.Transaction;
 import biz.turnonline.ecosystem.revolut.business.transaction.model.TransferRequest;
+import biz.turnonline.ecosystem.revolut.business.webhook.model.Webhook;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import org.ctoolkit.restapi.client.adaptee.DeleteExecutorAdaptee;
@@ -108,5 +110,18 @@ public class RevolutBusinessAdapterModule
         bind( new TypeLiteral<InsertExecutorAdaptee<TransferRequest>>()
         {
         } ).to( TransferAdaptee.class );
+
+        // Webhook endpoints
+        bind( new TypeLiteral<InsertExecutorAdaptee<Webhook>>()
+        {
+        } ).to( WebhookAdaptee.class );
+
+        bind( new TypeLiteral<GetExecutorAdaptee<Webhook>>()
+        {
+        } ).to( WebhookAdaptee.class );
+
+        bind( new TypeLiteral<DeleteExecutorAdaptee<Webhook>>()
+        {
+        } ).to( WebhookAdaptee.class );
     }
 }
