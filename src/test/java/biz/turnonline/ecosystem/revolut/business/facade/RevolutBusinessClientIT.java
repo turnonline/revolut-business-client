@@ -146,7 +146,7 @@ public class RevolutBusinessClientIT
                 .bankCountry( "SK" )
                 .currency( "EUR" )
                 .bic( "TATRSKBX" )
-                .iban( "SK9111000000002628813761" );
+                .iban( "DE79 5121 0800 0502 4251 60" );
 
         Counterparty counterparty = facade.insert( request )
                 .answerBy( Counterparty.class )
