@@ -143,9 +143,9 @@ public class RevolutBusinessClientIT
         request.profileType( ProfileType.BUSINESS )
                 .companyName( "Best, Ltd." )
                 .email( "account@ctoolkit.org" )
-                .bankCountry( "SK" )
+                .bankCountry( "DE" )
                 .currency( "EUR" )
-                .bic( "TATRSKBX" )
+                .bic( "SOGEDEFF" )
                 .iban( "DE79 5121 0800 0502 4251 60" );
 
         Counterparty counterparty = facade.insert( request )
