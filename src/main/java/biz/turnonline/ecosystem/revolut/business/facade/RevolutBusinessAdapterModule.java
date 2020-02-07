@@ -1,6 +1,7 @@
 package biz.turnonline.ecosystem.revolut.business.facade;
 
 import biz.turnonline.ecosystem.revolut.business.account.model.Account;
+import biz.turnonline.ecosystem.revolut.business.account.model.AccountBankDetailsItem;
 import biz.turnonline.ecosystem.revolut.business.counterparty.model.Counterparty;
 import biz.turnonline.ecosystem.revolut.business.counterparty.model.CreateCounterpartyRequest;
 import biz.turnonline.ecosystem.revolut.business.draft.model.CreatePaymentDraftRequest;
@@ -9,6 +10,7 @@ import biz.turnonline.ecosystem.revolut.business.draft.model.PaymentOrderInfo;
 import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRateResponse;
 import biz.turnonline.ecosystem.revolut.business.exchange.model.ExchangeRequest;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.AccountAdaptee;
+import biz.turnonline.ecosystem.revolut.business.facade.adaptee.AccountBankDetailsAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.CounterpartyAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.ExchangeAdaptee;
 import biz.turnonline.ecosystem.revolut.business.facade.adaptee.PaymentAdaptee;
@@ -45,6 +47,10 @@ public class RevolutBusinessAdapterModule
         bind( new TypeLiteral<ListExecutorAdaptee<Account>>()
         {
         } ).to( AccountAdaptee.class );
+
+        bind( new TypeLiteral<ListExecutorAdaptee<AccountBankDetailsItem>>()
+        {
+        } ).to( AccountBankDetailsAdaptee.class );
 
         // Counterparties endpoint
         bind( new TypeLiteral<InsertExecutorAdaptee<CreateCounterpartyRequest>>()
