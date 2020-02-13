@@ -1,5 +1,7 @@
 package biz.turnonline.ecosystem.revolut.business.facade;
 
+import biz.turnonline.ecosystem.revolut.business.oauth.JwtFactory;
+import biz.turnonline.ecosystem.revolut.business.oauth.RevolutCredential;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,6 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -66,13 +69,27 @@ public class RevolutBusinessProvider
                                   @Nonnull String api )
     {
         String endpointUrl = factory.getEndpointUrl( api );
-        String rootUrl = "https://b2b.revolut.com/api/";
+        String servicePath = "1.0";
+        String rootUrl = "https://b2b.revolut.com/api";
+        GenericUrl tokenServer = new GenericUrl( rootUrl + "/" + servicePath + "/auth/token" );
+
+        RevolutCredential revolut = new RevolutCredential.Builder()
+                .setTransport( transport )
+                .setJsonFactory( jsonFactory )
+                .setTokenServerUrl( tokenServer )
+                .setCertificate( null )
+                .setStore( null )
+                .setJwtTokenFactory( new JwtFactory() )
+                // client authentication is not needed here, but required by impl.
+                .setClientAuthentication( r -> System.out.println( r.toString() ) )
+                .build();
+
         AdapteeObjectParser parser = new AdapteeObjectParser( mapper );
 
         FacadeClient.Builder builder;
-        builder = new FacadeClient.Builder( transport, rootUrl, "1.0", parser );
+        builder = new FacadeClient.Builder( transport, rootUrl, servicePath, parser );
         builder.setApplicationName( "Revolut for Business" );
-        builder.setHttpRequestInitializer( credential );
+        builder.setHttpRequestInitializer( revolut );
         builder.setMapper( mapper );
 
         if ( !Strings.isNullOrEmpty( endpointUrl ) )
