@@ -48,12 +48,11 @@ import static com.google.common.truth.Truth.assertWithMessage;
         RevolutBusinessClientModule.class,
         RevolutBusinessAdapterModule.class,
         CtoolkitRestFacadeAppEngineModule.class,
-        CtoolkitRestFacadeDefaultOrikaModule.class
+        CtoolkitRestFacadeDefaultOrikaModule.class,
+        RevolutClientConfigModule.class
 } )
 public class RevolutBusinessClientIT
 {
-    private static final String TOKEN = "";
-
     private static Logger LOGGER = Logger.getLogger( "com.google.api.client.http" );
 
     static
@@ -89,10 +88,7 @@ public class RevolutBusinessClientIT
     @Test
     public void accounts()
     {
-        List<Account> list = facade.list( Account.class )
-                .authBy( TOKEN )
-                .bearer()
-                .finish();
+        List<Account> list = facade.list( Account.class ).finish();
 
         assertWithMessage( "Revolut list of accounts" )
                 .that( list )
@@ -119,8 +115,6 @@ public class RevolutBusinessClientIT
         String identifier = mainAccountId.toString();
         Account account = facade.get( Account.class )
                 .identifiedBy( identifier )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut single account" )
@@ -150,8 +144,6 @@ public class RevolutBusinessClientIT
 
         Counterparty counterparty = facade.insert( request )
                 .answerBy( Counterparty.class )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut counterparty" )
@@ -165,10 +157,7 @@ public class RevolutBusinessClientIT
     @Test( dependsOnMethods = "createCounterparty" )
     public void counterparties()
     {
-        List<Counterparty> list = facade.list( Counterparty.class )
-                .authBy( TOKEN )
-                .bearer()
-                .finish();
+        List<Counterparty> list = facade.list( Counterparty.class ).finish();
 
         assertWithMessage( "Revolut list of counterparties" )
                 .that( list )
@@ -184,8 +173,6 @@ public class RevolutBusinessClientIT
     {
         Counterparty counterparty = facade.get( Counterparty.class )
                 .identifiedBy( counterpartyId.toString() )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut single counterparty" )
@@ -209,8 +196,6 @@ public class RevolutBusinessClientIT
     {
         facade.delete( Counterparty.class )
                 .identifiedBy( counterpartyId.toString() )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
     }
 
@@ -235,8 +220,6 @@ public class RevolutBusinessClientIT
 
         CreatePaymentDraftResponse response = facade.insert( request )
                 .answerBy( CreatePaymentDraftResponse.class )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut payment draft" )
@@ -251,8 +234,6 @@ public class RevolutBusinessClientIT
     {
         PaymentDraftResponse draft = facade.get( PaymentDraftResponse.class )
                 .identifiedBy( paymentDraft.toString() )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut single payment draft" )
@@ -271,10 +252,7 @@ public class RevolutBusinessClientIT
     @Test( dependsOnMethods = "getPaymentDraft" )
     public void paymentDrafts()
     {
-        List<PaymentOrderInfo> list = facade.list( PaymentOrderInfo.class )
-                .authBy( TOKEN )
-                .bearer()
-                .finish();
+        List<PaymentOrderInfo> list = facade.list( PaymentOrderInfo.class ).finish();
 
         assertWithMessage( "Revolut list of payment drafts" )
                 .that( list )
@@ -290,8 +268,6 @@ public class RevolutBusinessClientIT
     {
         facade.delete( PaymentDraftResponse.class )
                 .identifiedBy( paymentDraft.toString() )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
     }
 
@@ -305,8 +281,6 @@ public class RevolutBusinessClientIT
 
         ExchangeRateResponse response = facade.get( ExchangeRateResponse.class )
                 .identifiedBy( 1L )
-                .authBy( TOKEN )
-                .bearer()
                 .finish( query );
 
         assertWithMessage( "Revolut exchange rate" )
@@ -333,8 +307,6 @@ public class RevolutBusinessClientIT
 
         ExchangeResponse response = facade.insert( exchange )
                 .answerBy( ExchangeResponse.class )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut exchange response" )
@@ -363,8 +335,6 @@ public class RevolutBusinessClientIT
 
         TransferResponse response = facade.insert( payment )
                 .answerBy( TransferResponse.class )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut transfer response" )
@@ -391,8 +361,6 @@ public class RevolutBusinessClientIT
 
         TransferResponse response = facade.insert( transfer )
                 .answerBy( TransferResponse.class )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut transfer" )
@@ -403,10 +371,7 @@ public class RevolutBusinessClientIT
     @Test( dependsOnMethods = "pay" )
     public void transactions()
     {
-        List<Transaction> transactions = facade.list( Transaction.class )
-                .authBy( TOKEN )
-                .bearer()
-                .finish();
+        List<Transaction> transactions = facade.list( Transaction.class ).finish();
 
         assertWithMessage( "Revolut list of transactions" )
                 .that( transactions )
@@ -424,8 +389,6 @@ public class RevolutBusinessClientIT
     {
         Transaction transaction = facade.get( Transaction.class )
                 .identifiedBy( transactionId )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut single transaction" )
@@ -438,8 +401,6 @@ public class RevolutBusinessClientIT
     {
         Transaction response = facade.get( Transaction.class )
                 .identifiedBy( paymentId )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut payment" )
@@ -456,8 +417,6 @@ public class RevolutBusinessClientIT
     {
         facade.delete( Transaction.class )
                 .identifiedBy( paymentId )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
     }
 
@@ -467,10 +426,7 @@ public class RevolutBusinessClientIT
         webhookUri = new URI( "https://payment.turnonline.biz/webhook" );
         Webhook webhook = new Webhook().url( webhookUri );
 
-        facade.insert( webhook )
-                .authBy( TOKEN )
-                .bearer()
-                .finish();
+        facade.insert( webhook ).finish();
     }
 
     @Test( dependsOnMethods = "createWebhook" )
@@ -478,8 +434,6 @@ public class RevolutBusinessClientIT
     {
         Webhook response = facade.get( Webhook.class )
                 .identifiedBy( 1L )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
 
         assertWithMessage( "Revolut webhook" )
@@ -496,8 +450,6 @@ public class RevolutBusinessClientIT
     {
         facade.delete( Webhook.class )
                 .identifiedBy( 1L )
-                .authBy( TOKEN )
-                .bearer()
                 .finish();
     }
 }

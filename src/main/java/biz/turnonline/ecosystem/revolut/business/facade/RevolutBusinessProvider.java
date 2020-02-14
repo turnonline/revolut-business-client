@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.Date;
 
 import static biz.turnonline.ecosystem.revolut.business.facade.RevolutBusinessClientModule.API_PREFIX;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * {@link FacadeClient} provider configured for Revolut for Business production endpoint.
@@ -43,10 +44,18 @@ public class RevolutBusinessProvider
             .setSerializationInclusion( JsonInclude.Include.NON_NULL )
             .registerModule( new JavaTimeModule() );
 
+    private final RevolutCredential.Certificate certificate;
+
+    private final RevolutCredential.Store store;
+
     @Inject
-    public RevolutBusinessProvider( @Nonnull GoogleApiProxyFactory factory )
+    public RevolutBusinessProvider( @Nonnull GoogleApiProxyFactory factory,
+                                    @Nonnull RevolutCredential.Certificate certificate,
+                                    @Nonnull RevolutCredential.Store store )
     {
         super( factory );
+        this.certificate = checkNotNull( certificate, "Revolut certificate can't be null" );
+        this.store = checkNotNull( store, "Revolut credential store can't be null" );
     }
 
     @Override
@@ -70,17 +79,17 @@ public class RevolutBusinessProvider
     {
         String endpointUrl = factory.getEndpointUrl( api );
         String servicePath = "1.0";
-        String rootUrl = "https://b2b.revolut.com/api";
-        GenericUrl tokenServer = new GenericUrl( rootUrl + "/" + servicePath + "/auth/token" );
+        String rootUrl = "https://b2b.revolut.com/api/";
+        GenericUrl tokenServer = new GenericUrl( rootUrl + servicePath + "/auth/token" );
 
         RevolutCredential revolut = new RevolutCredential.Builder()
                 .setTransport( transport )
                 .setJsonFactory( jsonFactory )
                 .setTokenServerUrl( tokenServer )
-                .setCertificate( null )
-                .setStore( null )
+                .setCertificate( certificate )
+                .setStore( store )
                 .setJwtTokenFactory( new JwtFactory() )
-                // client authentication is not needed here, but required by impl.
+                // client authentication is not needed (already managed by client_assertion), but required by impl.
                 .setClientAuthentication( r -> System.out.println( r.toString() ) )
                 .build();
 

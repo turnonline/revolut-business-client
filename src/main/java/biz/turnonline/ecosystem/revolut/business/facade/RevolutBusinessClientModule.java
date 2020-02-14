@@ -1,11 +1,18 @@
 package biz.turnonline.ecosystem.revolut.business.facade;
 
+import biz.turnonline.ecosystem.revolut.business.oauth.RevolutCredential;
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.MapBinder;
 import org.ctoolkit.restapi.client.adapter.ClientApi;
 
 /**
  * The Revolut for Business API Client guice module as a default configuration.
+ * <p>
+ * <strong>Provide your own implementations of</strong>
+ * <ul>
+ *     <li>{@link RevolutCredential.Certificate}</li>
+ *     <li>{@link RevolutCredential.Store}</li>
+ * </ul>
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */

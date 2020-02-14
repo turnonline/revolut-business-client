@@ -58,15 +58,18 @@ public class FacadeClient
         /**
          * Returns an instance of a new builder.
          *
-         * @param transport HTTP transport, which should normally be:
-         *                  <ul>
-         *                  <li>Google App Engine:
-         *                  {@code com.google.api.client.extensions.appengine.http.UrlFetchTransport}</li>
-         *                  <li>Android: {@code newCompatibleTransport} from
-         *                  {@code com.google.api.client.extensions.android.http.AndroidHttp}</li>
-         *                  <li>Java: {@link com.google.api.client.googleapis.javanet.GoogleNetHttpTransport#newTrustedTransport()}
-         *                  </li>
-         *                  </ul>
+         * @param transport   HTTP transport, which should normally be:
+         *                    <ul>
+         *                    <li>Google App Engine:
+         *                    {@code com.google.api.client.extensions.appengine.http.UrlFetchTransport}</li>
+         *                    <li>Android: {@code newCompatibleTransport} from
+         *                    {@code com.google.api.client.extensions.android.http.AndroidHttp}</li>
+         *                    <li>Java: {@link com.google.api.client.googleapis.javanet.GoogleNetHttpTransport#newTrustedTransport()}
+         *                    </li>
+         *                    </ul>
+         * @param rootUrl     root URL of the service
+         * @param servicePath relative service path
+         * @param parser      to be used for parsing responses
          */
         public Builder( @Nonnull HttpTransport transport,
                         @Nonnull String rootUrl,
@@ -87,6 +90,8 @@ public class FacadeClient
 
         /**
          * Sets the ObjectMapper that will be used to serialize payload to JSON and vise versa.
+         *
+         * @param mapper the mapper to be set
          */
         public void setMapper( ObjectMapper mapper )
         {

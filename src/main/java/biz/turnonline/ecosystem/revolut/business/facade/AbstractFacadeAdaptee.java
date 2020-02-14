@@ -34,17 +34,18 @@ public class AbstractFacadeAdaptee
     /**
      * Builds GET request instance.
      *
-     * @param path          the relative endpoint path with optional placeholder accounts/{0} etc.
-     * @param identifier    the optional resource identification as a source for path placeholders
-     * @param responseClass the type of the class to deserialize JSON response
+     * @param path       the relative endpoint path with optional placeholder accounts/{0} etc.
+     * @param identifier the optional resource identification as a source for path placeholders
+     * @param response   the type of the class to deserialize JSON response
+     * @param <T>        the type of the response
      * @return the GET request
      */
     protected <T> GetFacadeRequest<T> buildGetRequest( @Nonnull String path,
                                                        @Nullable Identifier identifier,
-                                                       @Nonnull Class<T> responseClass )
+                                                       @Nonnull Class<T> response )
     {
         String uriTemplate = formatUriTemplate( path, identifier );
-        return new GetFacadeRequest<>( client(), uriTemplate, responseClass );
+        return new GetFacadeRequest<>( client(), uriTemplate, response );
     }
 
     /**
@@ -55,6 +56,7 @@ public class AbstractFacadeAdaptee
      * @param identifier the optional resource identification as a source for path placeholders
      * @param payload    POJO resource that can be serialized into JSON content or {@code null} for none
      * @param response   the type of the class to deserialize JSON response
+     * @param <T>        the type of the response
      * @return the POST request
      */
     protected <T> PostFacadeRequest<T> buildPostRequest( @Nonnull String path,
@@ -75,6 +77,7 @@ public class AbstractFacadeAdaptee
      * @param path       the relative endpoint path with optional placeholder accounts/{0} etc.
      * @param identifier the optional resource identification as a source for path placeholders
      * @param response   the type of the class to deserialize JSON response
+     * @param <T>        the type of the response
      * @return the DELETE request
      */
     protected <T> DeleteFacadeRequest<T> buildDeleteRequest( @Nonnull String path,
@@ -158,6 +161,7 @@ public class AbstractFacadeAdaptee
      *
      * @param request    the client request
      * @param parameters the optional resource (query) parameters
+     * @param <T>        the payload type of the request
      * @return the response of the remote call
      * @throws IOException might be thrown during remote call execution
      */
@@ -176,6 +180,7 @@ public class AbstractFacadeAdaptee
      *
      * @param request    the client request
      * @param parameters the optional resource (query) parameters
+     * @param <T>        the type of the response
      * @return the response of the remote call
      * @throws IOException might be thrown during remote call execution
      */

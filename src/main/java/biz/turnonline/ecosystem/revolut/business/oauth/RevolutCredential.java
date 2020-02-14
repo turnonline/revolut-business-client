@@ -31,17 +31,18 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * </ul>
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
+ * @see <a href="https://revolut-engineering.github.io/api-docs/#business-api-oauth">Revolut Business API OAuth</a>
  */
 public class RevolutCredential
         extends Credential
 {
     private static final Logger LOGGER = LoggerFactory.getLogger( RevolutCredential.class );
 
-    private Certificate certificate;
+    private final Certificate certificate;
 
-    private Store store;
+    private final Store store;
 
-    private JwtTokenFactory factory;
+    private final JwtTokenFactory factory;
 
     RevolutCredential( Builder builder )
     {
@@ -55,6 +56,11 @@ public class RevolutCredential
     protected TokenResponse executeRefreshToken() throws IOException
     {
         String clientId = certificate.clientId();
+        if ( clientId == null )
+        {
+            throw new IllegalArgumentException( "Client ID is being required to refresh Revolut token" );
+        }
+
         String refreshToken = store.getRefreshToken( clientId );
         boolean storeRefreshToken = refreshToken == null;
         TokenRequest request;
@@ -126,21 +132,28 @@ public class RevolutCredential
      * Stores the Revolut credentials in a secure manner.
      * <p>
      * <strong>Revolut</strong>
+     * <p>
      * <strong>Commands to generate RSA (RS256) private key (pkcs8) and public X.509 certificate</strong>
      * </p>
      * <pre>
+     * {@code
      *   openssl req -x509 -nodes -newkey rsa:2048 -keyout rsa_private.pem -out rsa_public_cert.pem -days 1825
      *   openssl pkcs8 -topk8 -inform PEM -outform DER -in rsa_private.pem -nocrypt > rsa_private_pkcs8
+     * }
      * </pre>
      */
     public interface Store
     {
         /**
          * Returns the authorisation code for specified client ID.
-         * The code provided by OAuth redirect URI as a query parameter.
+         * A code provided by OAuth redirect URI as a query parameter.
+         * <p>
+         * Once the authorisation code has been consumed it will be removed
+         * and the next attempt to get code thereafter will return {@code null}.
          *
          * @param clientId for which to return code
-         * @return the authorisation code
+         * @return the authorisation code or {@code null}
+         * @see #store(String, String)
          */
         String getCode( @Nonnull String clientId );
 
@@ -154,9 +167,11 @@ public class RevolutCredential
 
         /**
          * Stores given refresh token for specified client ID.
+         * If token has been successfully stored, authorisation code for this client ID will be removed.
          *
          * @param clientId for which to store refresh token
          * @param token    to be stored
+         * @see #getCode(String)
          */
         void store( @Nonnull String clientId, @Nonnull String token );
 
@@ -225,6 +240,7 @@ public class RevolutCredential
          * Sets the API Certificate: OAuth authorisation details provider.
          *
          * @param certificate the certificate to be set
+         * @return this to chain calls
          */
         public Builder setCertificate( Certificate certificate )
         {
@@ -236,6 +252,7 @@ public class RevolutCredential
          * Sets the Revolut credentials store manager.
          *
          * @param store the storage to manage credentials
+         * @return this to chain calls
          */
         public Builder setStore( Store store )
         {
@@ -247,6 +264,7 @@ public class RevolutCredential
          * Sets the factory to provide a token for 'client_assertion'
          *
          * @param factory the factory to be used to provide a JWT token
+         * @return this to chain calls
          */
         public Builder setJwtTokenFactory( JwtTokenFactory factory )
         {
