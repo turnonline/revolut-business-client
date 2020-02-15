@@ -12,7 +12,7 @@ import java.nio.file.Paths;
  * Test guice configuration of
  * <ul>
  *     <li>{@link RevolutCredential.Certificate}</li>
- *     <li>{@link RevolutCredential.Store}</li>
+ *     <li>{@link RevolutCredential.Storage}</li>
  * </ul>
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
@@ -24,7 +24,7 @@ public class RevolutClientConfigModule
     protected void configure()
     {
         bind( RevolutCredential.Certificate.class ).to( Certificate.class ).asEagerSingleton();
-        bind( RevolutCredential.Store.class ).to( Store.class ).asEagerSingleton();
+        bind( RevolutCredential.Storage.class ).to( Store.class ).asEagerSingleton();
     }
 
     private static class Certificate
@@ -44,7 +44,7 @@ public class RevolutClientConfigModule
     }
 
     private static class Store
-            implements RevolutCredential.Store
+            implements RevolutCredential.Storage
     {
         @Override
         public String getCode( @Nonnull String clientId )

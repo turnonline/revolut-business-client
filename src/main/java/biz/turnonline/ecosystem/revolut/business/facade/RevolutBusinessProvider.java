@@ -46,12 +46,12 @@ public class RevolutBusinessProvider
 
     private final RevolutCredential.Certificate certificate;
 
-    private final RevolutCredential.Store store;
+    private final RevolutCredential.Storage store;
 
     @Inject
     public RevolutBusinessProvider( @Nonnull GoogleApiProxyFactory factory,
                                     @Nonnull RevolutCredential.Certificate certificate,
-                                    @Nonnull RevolutCredential.Store store )
+                                    @Nonnull RevolutCredential.Storage store )
     {
         super( factory );
         this.certificate = checkNotNull( certificate, "Revolut certificate can't be null" );
@@ -87,7 +87,7 @@ public class RevolutBusinessProvider
                 .setJsonFactory( jsonFactory )
                 .setTokenServerUrl( tokenServer )
                 .setCertificate( certificate )
-                .setStore( store )
+                .setStorage( store )
                 .setJwtTokenFactory( new JwtFactory() )
                 // client authentication is not needed (already managed by client_assertion), but required by impl.
                 .setClientAuthentication( r -> System.out.println( r.toString() ) )

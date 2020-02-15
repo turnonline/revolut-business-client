@@ -11,7 +11,7 @@ import org.ctoolkit.restapi.client.adapter.ClientApi;
  * <strong>Provide your own implementations of</strong>
  * <ul>
  *     <li>{@link RevolutCredential.Certificate}</li>
- *     <li>{@link RevolutCredential.Store}</li>
+ *     <li>{@link RevolutCredential.Storage}</li>
  * </ul>
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>

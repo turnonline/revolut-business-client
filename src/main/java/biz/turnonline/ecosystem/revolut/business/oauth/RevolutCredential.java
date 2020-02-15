@@ -40,7 +40,7 @@ public class RevolutCredential
 
     private final Certificate certificate;
 
-    private final Store store;
+    private final Storage storage;
 
     private final JwtTokenFactory factory;
 
@@ -48,7 +48,7 @@ public class RevolutCredential
     {
         super( builder );
         this.certificate = checkNotNull( builder.certificate, "Cert details provider can't be null" );
-        this.store = checkNotNull( builder.store, "Credential store provider can't be null" );
+        this.storage = checkNotNull( builder.storage, "Credential storage provider can't be null" );
         this.factory = checkNotNull( builder.factory, "JWT token Factory can't be null" );
     }
 
@@ -58,15 +58,40 @@ public class RevolutCredential
         String clientId = certificate.clientId();
         if ( clientId == null )
         {
-            throw new IllegalArgumentException( "Client ID is being required to refresh Revolut token" );
+            LOGGER.error( "Client ID is being required to refresh Revolut token. Issuer " + certificate.issuer() );
+            return null;
         }
 
-        String refreshToken = store.getRefreshToken( clientId );
+        String jwt = jwt( clientId );
+        if ( jwt == null )
+        {
+            return null;
+        }
+
+        String refreshToken = null;
+        try
+        {
+            refreshToken = storage.getRefreshToken( clientId );
+        }
+        catch ( Exception e )
+        {
+            LOGGER.error( "Getting the refresh token for Client ID " + clientId + " has failed", e );
+        }
+
         boolean storeRefreshToken = refreshToken == null;
         TokenRequest request;
 
         if ( storeRefreshToken )
         {
+            String code = storage.getCode( clientId );
+            if ( code == null )
+            {
+                LOGGER.error( "Authorisation code is being required to get Revolut access and refresh token."
+                        + " Client ID " + clientId
+                        + " Issuer " + certificate.issuer() );
+                return null;
+            }
+
             // if successful it will return refresh_token too
             request = new TokenRequest(
                     getTransport(),
@@ -74,7 +99,7 @@ public class RevolutCredential
                     new GenericUrl( getTokenServerEncodedUrl() ),
                     "authorization_code" );
 
-            request.put( "code", store.getCode( clientId ) );
+            request.put( "code", code );
         }
         else
         {
@@ -87,21 +112,51 @@ public class RevolutCredential
 
         request.put( "client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer" );
         request.put( "client_id", clientId );
-        request.put( "client_assertion", jwt( clientId ) );
+        request.put( "client_assertion", jwt );
 
         TokenResponse response = request.execute();
         if ( storeRefreshToken && response.getRefreshToken() != null )
         {
-            store.store( clientId, response.getRefreshToken() );
+            try
+            {
+                storage.store( clientId, response.getRefreshToken() );
+            }
+            catch ( Exception e )
+            {
+                LOGGER.error( "To store the refresh token for Client ID " + clientId + " has failed", e );
+            }
         }
         return response;
     }
 
-    private String jwt( String clientId )
+    private String jwt( @Nonnull String clientId )
     {
         String issuer = certificate.issuer();
-        String token = factory.create( clientId, issuer, store.getSecretKey( clientId ) );
-        LOGGER.info( "New JWT token for client ID '" + clientId + "' has been created" );
+        if ( issuer == null )
+        {
+            LOGGER.error( "JWT token can't be created for client ID " + clientId + " issuer is null" );
+            return null;
+        }
+
+        byte[] secretKey;
+        try
+        {
+            secretKey = storage.getSecretKey( clientId );
+        }
+        catch ( Exception e )
+        {
+            LOGGER.error( "Getting the secret key for Client ID " + clientId + " has failed", e );
+            return null;
+        }
+
+        if ( secretKey == null )
+        {
+            LOGGER.error( "JWT token can't be created for client ID " + clientId + ", secret key is null" );
+            return null;
+        }
+
+        String token = factory.create( clientId, issuer, secretKey );
+        LOGGER.info( "New JWT token for client ID " + clientId + " has been created" );
 
         return token;
     }
@@ -142,7 +197,7 @@ public class RevolutCredential
      * }
      * </pre>
      */
-    public interface Store
+    public interface Storage
     {
         /**
          * Returns the authorisation code for specified client ID.
@@ -218,7 +273,7 @@ public class RevolutCredential
     {
         private Certificate certificate;
 
-        private Store store;
+        private Storage storage;
 
         private JwtTokenFactory factory;
 
@@ -249,14 +304,14 @@ public class RevolutCredential
         }
 
         /**
-         * Sets the Revolut credentials store manager.
+         * Sets the secure  Revolut credentials storage manager.
          *
-         * @param store the storage to manage credentials
+         * @param storage the storage manager to be set
          * @return this to chain calls
          */
-        public Builder setStore( Store store )
+        public Builder setStorage( Storage storage )
         {
-            this.store = store;
+            this.storage = storage;
             return this;
         }
 
