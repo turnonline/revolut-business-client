@@ -2,7 +2,10 @@ package biz.turnonline.ecosystem.revolut.business.oauth;
 
 import com.google.api.client.auth.oauth2.TokenRequest;
 import com.google.api.client.auth.oauth2.TokenResponse;
+import com.google.api.client.auth.oauth2.TokenResponseException;
 import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpHeaders;
+import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import mockit.Expectations;
@@ -24,7 +27,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
-@SuppressWarnings( "ConstantConditions" )
+@SuppressWarnings( {"ConstantConditions", "ResultOfMethodCallIgnored"} )
 public class RevolutCredentialTest
 {
     public static final String REFRESH_TOKEN = "oa_sand_ScxB..";
@@ -36,6 +39,7 @@ public class RevolutCredentialTest
     @Tested
     private RevolutCredential tested;
 
+    @SuppressWarnings( "FieldCanBeLocal" )
     @Injectable
     private RevolutCredential.Builder builder;
 
@@ -53,6 +57,9 @@ public class RevolutCredentialTest
 
     @Mocked
     private JsonFactory jsonFactory;
+
+    @Mocked
+    private HttpResponse httpResponse;
 
     @BeforeMethod
     public void before()
@@ -176,7 +183,7 @@ public class RevolutCredentialTest
     }
 
     @Test
-    public void executeRefreshToken_RefreshTokenNull_AuthorizationCodeNull()
+    public void executeRefreshToken_AuthorizationCodeNull()
             throws IOException
     {
         expectationsJwtToken();
@@ -199,7 +206,7 @@ public class RevolutCredentialTest
     }
 
     @Test
-    public <T extends TokenRequest> void executeRefreshToken_RefreshToken_AuthorizationCodeCall()
+    public <T extends TokenRequest> void executeRefreshToken_ExchangeAuthorizationCode()
             throws IOException
     {
         expectationsJwtToken();
@@ -237,7 +244,7 @@ public class RevolutCredentialTest
     }
 
     @Test
-    public <T extends TokenRequest> void executeRefreshToken_RefreshToken_AuthorizationCodeCall_StorageFailure()
+    public <T extends TokenRequest> void executeRefreshToken_ExchangeAuthorizationCode_StorageFailure()
             throws IOException
     {
         expectationsJwtToken();
@@ -267,6 +274,40 @@ public class RevolutCredentialTest
         assertWithMessage( "Token response" )
                 .that( tested.executeRefreshToken() )
                 .isNotNull();
+    }
+
+    @Test( expectedExceptions = TokenResponseException.class )
+    public <T extends TokenRequest> void executeRefreshToken_ExchangeAuthorizationCode_Unauthorized()
+            throws IOException
+    {
+        expectationsJwtToken();
+        new Expectations()
+        {
+            {
+                storage.getRefreshToken( anyString );
+                result = null;
+
+                storage.getCode( anyString );
+                result = "oa_sand_qmJf..";
+
+                httpResponse.getHeaders();
+                result = new HttpHeaders();
+
+                storage.store( anyString, anyString );
+                times = 0;
+            }
+        };
+
+        new MockUp<T>()
+        {
+            @Mock
+            public TokenResponse execute() throws IOException
+            {
+                throw TokenResponseException.from( jsonFactory, httpResponse );
+            }
+        };
+
+        tested.executeRefreshToken();
     }
 
     @Test
