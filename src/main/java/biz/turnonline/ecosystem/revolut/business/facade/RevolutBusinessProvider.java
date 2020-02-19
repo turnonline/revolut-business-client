@@ -1,6 +1,5 @@
 package biz.turnonline.ecosystem.revolut.business.facade;
 
-import biz.turnonline.ecosystem.revolut.business.oauth.JwtFactory;
 import biz.turnonline.ecosystem.revolut.business.oauth.RevolutCredential;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -48,14 +47,18 @@ public class RevolutBusinessProvider
 
     private final RevolutCredential.Storage store;
 
+    private final RevolutCredential.JwtTokenFactory rFactory;
+
     @Inject
     public RevolutBusinessProvider( @Nonnull GoogleApiProxyFactory factory,
                                     @Nonnull RevolutCredential.Certificate certificate,
-                                    @Nonnull RevolutCredential.Storage store )
+                                    @Nonnull RevolutCredential.Storage store,
+                                    @Nonnull RevolutCredential.JwtTokenFactory rFactory )
     {
         super( factory );
         this.certificate = checkNotNull( certificate, "Revolut certificate can't be null" );
         this.store = checkNotNull( store, "Revolut credential store can't be null" );
+        this.rFactory = rFactory;
     }
 
     @Override
@@ -77,9 +80,13 @@ public class RevolutBusinessProvider
                                   @Nonnull HttpRequestInitializer credential,
                                   @Nonnull String api )
     {
-        String endpointUrl = factory.getEndpointUrl( api );
+        String rootUrl = factory.getEndpointUrl( api );
+        if ( Strings.isNullOrEmpty( rootUrl ) )
+        {
+            rootUrl = "https://b2b.revolut.com/api/";
+        }
+
         String servicePath = "1.0";
-        String rootUrl = "https://b2b.revolut.com/api/";
         GenericUrl tokenServer = new GenericUrl( rootUrl + servicePath + "/auth/token" );
 
         RevolutCredential revolut = new RevolutCredential.Builder()
@@ -88,7 +95,7 @@ public class RevolutBusinessProvider
                 .setTokenServerUrl( tokenServer )
                 .setCertificate( certificate )
                 .setStorage( store )
-                .setJwtTokenFactory( new JwtFactory() )
+                .setJwtTokenFactory( rFactory )
                 // client authentication is not needed (already managed by client_assertion), but required by impl.
                 .setClientAuthentication( r -> System.out.println( r.toString() ) )
                 .build();
@@ -100,11 +107,6 @@ public class RevolutBusinessProvider
         builder.setApplicationName( "Revolut for Business" );
         builder.setHttpRequestInitializer( revolut );
         builder.setMapper( mapper );
-
-        if ( !Strings.isNullOrEmpty( endpointUrl ) )
-        {
-            builder.setRootUrl( endpointUrl );
-        }
 
         return builder.build();
     }

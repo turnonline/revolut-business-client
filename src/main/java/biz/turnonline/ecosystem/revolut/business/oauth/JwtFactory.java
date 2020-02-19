@@ -59,7 +59,7 @@ public class JwtFactory
         }
         catch ( InvalidKeySpecException | NoSuchAlgorithmException e )
         {
-            throw new RuntimeException( "Invalid configuration", e );
+            throw new RuntimeException( "Invalid configuration for Client ID " + clientId, e );
         }
 
         HashMap<String, Object> header = new HashMap<>();
