@@ -1,5 +1,6 @@
 package biz.turnonline.ecosystem.revolut.business.facade;
 
+import biz.turnonline.ecosystem.revolut.business.oauth.JwtFactory;
 import biz.turnonline.ecosystem.revolut.business.oauth.RevolutCredential;
 import com.google.inject.AbstractModule;
 
@@ -25,6 +26,7 @@ public class RevolutClientConfigModule
     {
         bind( RevolutCredential.Certificate.class ).to( Certificate.class ).asEagerSingleton();
         bind( RevolutCredential.Storage.class ).to( Store.class ).asEagerSingleton();
+        bind( RevolutCredential.JwtTokenFactory.class ).to( JwtFactory.class ).asEagerSingleton();
     }
 
     private static class Certificate

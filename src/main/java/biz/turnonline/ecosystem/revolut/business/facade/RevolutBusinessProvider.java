@@ -49,6 +49,8 @@ public class RevolutBusinessProvider
 
     private final RevolutCredential.JwtTokenFactory rFactory;
 
+    private RevolutCredential revolutCredential;
+
     @Inject
     public RevolutBusinessProvider( @Nonnull GoogleApiProxyFactory factory,
                                     @Nonnull RevolutCredential.Certificate certificate,
@@ -89,7 +91,7 @@ public class RevolutBusinessProvider
         String servicePath = "1.0";
         GenericUrl tokenServer = new GenericUrl( rootUrl + servicePath + "/auth/token" );
 
-        RevolutCredential revolut = new RevolutCredential.Builder()
+        revolutCredential = new RevolutCredential.Builder()
                 .setTransport( transport )
                 .setJsonFactory( jsonFactory )
                 .setTokenServerUrl( tokenServer )
@@ -105,10 +107,22 @@ public class RevolutBusinessProvider
         FacadeClient.Builder builder;
         builder = new FacadeClient.Builder( transport, rootUrl, servicePath, parser );
         builder.setApplicationName( "Revolut for Business" );
-        builder.setHttpRequestInitializer( revolut );
+        builder.setHttpRequestInitializer( revolutCredential );
         builder.setMapper( mapper );
 
         return builder.build();
+    }
+
+    /**
+     * Clears access and refresh token from memory.
+     * A next call to Revolut API will cause an attempt to refresh token.
+     *
+     * @see RevolutCredential#refreshToken()
+     */
+    public void resetAccessToken()
+    {
+        revolutCredential.setAccessToken( null );
+        revolutCredential.setRefreshToken( null );
     }
 
     /**
