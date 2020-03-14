@@ -30,7 +30,6 @@ import java.util.Objects;
         TransferResponse.JSON_PROPERTY_CREATED_AT,
         TransferResponse.JSON_PROPERTY_COMPLETED_AT
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.956+01:00[Europe/Bratislava]" )
 public class TransferResponse
 {
     public static final String JSON_PROPERTY_ID = "id";
@@ -49,7 +48,6 @@ public class TransferResponse
 
     private OffsetDateTime completedAt;
 
-
     public TransferResponse id( String id )
     {
 
@@ -65,18 +63,15 @@ public class TransferResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getId()
     {
         return id;
     }
 
-
     public void setId( String id )
     {
         this.id = id;
     }
-
 
     public TransferResponse state( TransactionState state )
     {
@@ -93,18 +88,15 @@ public class TransferResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_STATE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public TransactionState getState()
     {
         return state;
     }
 
-
     public void setState( TransactionState state )
     {
         this.state = state;
     }
-
 
     public TransferResponse createdAt( OffsetDateTime createdAt )
     {
@@ -121,18 +113,15 @@ public class TransferResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CREATED_AT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public OffsetDateTime getCreatedAt()
     {
         return createdAt;
     }
 
-
     public void setCreatedAt( OffsetDateTime createdAt )
     {
         this.createdAt = createdAt;
     }
-
 
     public TransferResponse completedAt( OffsetDateTime completedAt )
     {
@@ -150,18 +139,15 @@ public class TransferResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_COMPLETED_AT )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public OffsetDateTime getCompletedAt()
     {
         return completedAt;
     }
 
-
     public void setCompletedAt( OffsetDateTime completedAt )
     {
         this.completedAt = completedAt;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -186,7 +172,6 @@ public class TransferResponse
     {
         return Objects.hash( id, state, createdAt, completedAt );
     }
-
 
     @Override
     public String toString()
@@ -213,6 +198,5 @@ public class TransferResponse
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

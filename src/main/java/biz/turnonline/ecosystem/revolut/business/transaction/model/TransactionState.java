@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum TransactionState
 {
-
     CREATED( "created" ),
 
     PENDING( "pending" ),
@@ -30,7 +29,9 @@ public enum TransactionState
 
     DECLINED( "declined" ),
 
-    FAILED( "failed" );
+    FAILED( "failed" ),
+
+    REVERTED( "reverted" );
 
     private String value;
 

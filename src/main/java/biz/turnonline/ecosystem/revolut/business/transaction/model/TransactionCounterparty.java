@@ -29,7 +29,6 @@ import java.util.UUID;
         TransactionCounterparty.JSON_PROPERTY_ACCOUNT_ID,
         TransactionCounterparty.JSON_PROPERTY_ACCOUNT_TYPE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.956+01:00[Europe/Bratislava]" )
 public class TransactionCounterparty
 {
     public static final String JSON_PROPERTY_ID = "id";
@@ -43,7 +42,6 @@ public class TransactionCounterparty
     private UUID accountId;
 
     private TransactionCounterpartyAccountType accountType;
-
 
     public TransactionCounterparty id( UUID id )
     {
@@ -61,18 +59,15 @@ public class TransactionCounterparty
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public UUID getId()
     {
         return id;
     }
 
-
     public void setId( UUID id )
     {
         this.id = id;
     }
-
 
     public TransactionCounterparty accountId( UUID accountId )
     {
@@ -90,18 +85,15 @@ public class TransactionCounterparty
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_ID )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public UUID getAccountId()
     {
         return accountId;
     }
 
-
     public void setAccountId( UUID accountId )
     {
         this.accountId = accountId;
     }
-
 
     public TransactionCounterparty accountType( TransactionCounterpartyAccountType accountType )
     {
@@ -118,18 +110,15 @@ public class TransactionCounterparty
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_TYPE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public TransactionCounterpartyAccountType getAccountType()
     {
         return accountType;
     }
 
-
     public void setAccountType( TransactionCounterpartyAccountType accountType )
     {
         this.accountType = accountType;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -153,7 +142,6 @@ public class TransactionCounterparty
     {
         return Objects.hash( id, accountId, accountType );
     }
-
 
     @Override
     public String toString()
@@ -179,6 +167,5 @@ public class TransactionCounterparty
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

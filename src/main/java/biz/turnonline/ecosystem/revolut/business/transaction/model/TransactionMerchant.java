@@ -29,7 +29,6 @@ import java.util.Objects;
         TransactionMerchant.JSON_PROPERTY_CATEGORY_CODE,
         TransactionMerchant.JSON_PROPERTY_COUNTRY
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.956+01:00[Europe/Bratislava]" )
 public class TransactionMerchant
 {
     public static final String JSON_PROPERTY_NAME = "name";
@@ -48,7 +47,6 @@ public class TransactionMerchant
 
     private String country;
 
-
     public TransactionMerchant name( String name )
     {
 
@@ -65,18 +63,15 @@ public class TransactionMerchant
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getName()
     {
         return name;
     }
 
-
     public void setName( String name )
     {
         this.name = name;
     }
-
 
     public TransactionMerchant city( String city )
     {
@@ -94,18 +89,15 @@ public class TransactionMerchant
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CITY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCity()
     {
         return city;
     }
 
-
     public void setCity( String city )
     {
         this.city = city;
     }
-
 
     public TransactionMerchant categoryCode( String categoryCode )
     {
@@ -123,18 +115,15 @@ public class TransactionMerchant
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CATEGORY_CODE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCategoryCode()
     {
         return categoryCode;
     }
 
-
     public void setCategoryCode( String categoryCode )
     {
         this.categoryCode = categoryCode;
     }
-
 
     public TransactionMerchant country( String country )
     {
@@ -152,18 +141,15 @@ public class TransactionMerchant
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_COUNTRY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCountry()
     {
         return country;
     }
 
-
     public void setCountry( String country )
     {
         this.country = country;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -188,7 +174,6 @@ public class TransactionMerchant
     {
         return Objects.hash( name, city, categoryCode, country );
     }
-
 
     @Override
     public String toString()
@@ -215,6 +200,5 @@ public class TransactionMerchant
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

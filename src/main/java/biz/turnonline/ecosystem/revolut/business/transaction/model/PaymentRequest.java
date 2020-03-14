@@ -34,7 +34,6 @@ import java.util.UUID;
         PaymentRequest.JSON_PROPERTY_REFERENCE,
         PaymentRequest.JSON_PROPERTY_SCHEDULE_FOR
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.956+01:00[Europe/Bratislava]" )
 public class PaymentRequest
 {
     public static final String JSON_PROPERTY_REQUEST_ID = "request_id";

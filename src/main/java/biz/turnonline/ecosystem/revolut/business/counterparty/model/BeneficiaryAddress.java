@@ -31,7 +31,6 @@ import java.util.Objects;
         BeneficiaryAddress.JSON_PROPERTY_COUNTRY,
         BeneficiaryAddress.JSON_PROPERTY_POSTCODE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.366+01:00[Europe/Bratislava]" )
 public class BeneficiaryAddress
 {
     public static final String JSON_PROPERTY_STREET_LINE1 = "street_line1";
@@ -58,7 +57,6 @@ public class BeneficiaryAddress
 
     private String postcode;
 
-
     public BeneficiaryAddress streetLine1( String streetLine1 )
     {
 
@@ -75,18 +73,15 @@ public class BeneficiaryAddress
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_STREET_LINE1 )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getStreetLine1()
     {
         return streetLine1;
     }
 
-
     public void setStreetLine1( String streetLine1 )
     {
         this.streetLine1 = streetLine1;
     }
-
 
     public BeneficiaryAddress streetLine2( String streetLine2 )
     {
@@ -104,18 +99,15 @@ public class BeneficiaryAddress
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_STREET_LINE2 )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getStreetLine2()
     {
         return streetLine2;
     }
 
-
     public void setStreetLine2( String streetLine2 )
     {
         this.streetLine2 = streetLine2;
     }
-
 
     public BeneficiaryAddress region( String region )
     {
@@ -133,18 +125,15 @@ public class BeneficiaryAddress
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REGION )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getRegion()
     {
         return region;
     }
 
-
     public void setRegion( String region )
     {
         this.region = region;
     }
-
 
     public BeneficiaryAddress city( String city )
     {
@@ -162,18 +151,15 @@ public class BeneficiaryAddress
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CITY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCity()
     {
         return city;
     }
 
-
     public void setCity( String city )
     {
         this.city = city;
     }
-
 
     public BeneficiaryAddress country( String country )
     {
@@ -190,18 +176,15 @@ public class BeneficiaryAddress
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_COUNTRY )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getCountry()
     {
         return country;
     }
 
-
     public void setCountry( String country )
     {
         this.country = country;
     }
-
 
     public BeneficiaryAddress postcode( String postcode )
     {
@@ -218,18 +201,15 @@ public class BeneficiaryAddress
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_POSTCODE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getPostcode()
     {
         return postcode;
     }
 
-
     public void setPostcode( String postcode )
     {
         this.postcode = postcode;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -256,7 +236,6 @@ public class BeneficiaryAddress
     {
         return Objects.hash( streetLine1, streetLine2, region, city, country, postcode );
     }
-
 
     @Override
     public String toString()
@@ -285,6 +264,5 @@ public class BeneficiaryAddress
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

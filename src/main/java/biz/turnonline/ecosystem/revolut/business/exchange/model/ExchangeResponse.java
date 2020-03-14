@@ -33,7 +33,6 @@ import java.util.UUID;
         ExchangeResponse.JSON_PROPERTY_COMPLETED_AT,
         ExchangeResponse.JSON_PROPERTY_STATE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.813+01:00[Europe/Bratislava]" )
 public class ExchangeResponse
 {
     public static final String JSON_PROPERTY_ID = "id";
@@ -60,7 +59,6 @@ public class ExchangeResponse
 
     private TransactionState state;
 
-
     public ExchangeResponse id( UUID id )
     {
 
@@ -77,18 +75,15 @@ public class ExchangeResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public UUID getId()
     {
         return id;
     }
 
-
     public void setId( UUID id )
     {
         this.id = id;
     }
-
 
     public ExchangeResponse type( String type )
     {
@@ -106,18 +101,15 @@ public class ExchangeResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_TYPE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getType()
     {
         return type;
     }
 
-
     public void setType( String type )
     {
         this.type = type;
     }
-
 
     public ExchangeResponse reasonCode( String reasonCode )
     {
@@ -135,18 +127,15 @@ public class ExchangeResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REASON_CODE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getReasonCode()
     {
         return reasonCode;
     }
 
-
     public void setReasonCode( String reasonCode )
     {
         this.reasonCode = reasonCode;
     }
-
 
     public ExchangeResponse createdAt( OffsetDateTime createdAt )
     {
@@ -164,18 +153,15 @@ public class ExchangeResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CREATED_AT )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public OffsetDateTime getCreatedAt()
     {
         return createdAt;
     }
 
-
     public void setCreatedAt( OffsetDateTime createdAt )
     {
         this.createdAt = createdAt;
     }
-
 
     public ExchangeResponse completedAt( OffsetDateTime completedAt )
     {
@@ -193,18 +179,15 @@ public class ExchangeResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_COMPLETED_AT )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public OffsetDateTime getCompletedAt()
     {
         return completedAt;
     }
 
-
     public void setCompletedAt( OffsetDateTime completedAt )
     {
         this.completedAt = completedAt;
     }
-
 
     public ExchangeResponse state( TransactionState state )
     {
@@ -222,18 +205,15 @@ public class ExchangeResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_STATE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public TransactionState getState()
     {
         return state;
     }
 
-
     public void setState( TransactionState state )
     {
         this.state = state;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -260,7 +240,6 @@ public class ExchangeResponse
     {
         return Objects.hash( id, type, reasonCode, createdAt, completedAt, state );
     }
-
 
     @Override
     public String toString()
@@ -289,6 +268,5 @@ public class ExchangeResponse
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

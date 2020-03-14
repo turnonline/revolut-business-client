@@ -32,7 +32,6 @@ import java.util.UUID;
         TransferRequest.JSON_PROPERTY_CURRENCY,
         TransferRequest.JSON_PROPERTY_REFERENCE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.956+01:00[Europe/Bratislava]" )
 public class TransferRequest
 {
     public static final String JSON_PROPERTY_REQUEST_ID = "request_id";
@@ -59,7 +58,6 @@ public class TransferRequest
 
     private String reference;
 
-
     public TransferRequest requestId( String requestId )
     {
 
@@ -75,18 +73,15 @@ public class TransferRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_REQUEST_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getRequestId()
     {
         return requestId;
     }
 
-
     public void setRequestId( String requestId )
     {
         this.requestId = requestId;
     }
-
 
     public TransferRequest sourceAccountId( UUID sourceAccountId )
     {
@@ -103,18 +98,15 @@ public class TransferRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_SOURCE_ACCOUNT_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getSourceAccountId()
     {
         return sourceAccountId;
     }
 
-
     public void setSourceAccountId( UUID sourceAccountId )
     {
         this.sourceAccountId = sourceAccountId;
     }
-
 
     public TransferRequest targetAccountId( UUID targetAccountId )
     {
@@ -131,18 +123,15 @@ public class TransferRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_TARGET_ACCOUNT_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getTargetAccountId()
     {
         return targetAccountId;
     }
 
-
     public void setTargetAccountId( UUID targetAccountId )
     {
         this.targetAccountId = targetAccountId;
     }
-
 
     public TransferRequest amount( Double amount )
     {
@@ -159,18 +148,15 @@ public class TransferRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_AMOUNT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Double getAmount()
     {
         return amount;
     }
 
-
     public void setAmount( Double amount )
     {
         this.amount = amount;
     }
-
 
     public TransferRequest currency( String currency )
     {
@@ -187,18 +173,15 @@ public class TransferRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getCurrency()
     {
         return currency;
     }
 
-
     public void setCurrency( String currency )
     {
         this.currency = currency;
     }
-
 
     public TransferRequest reference( String reference )
     {
@@ -216,18 +199,15 @@ public class TransferRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REFERENCE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getReference()
     {
         return reference;
     }
 
-
     public void setReference( String reference )
     {
         this.reference = reference;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -254,7 +234,6 @@ public class TransferRequest
     {
         return Objects.hash( requestId, sourceAccountId, targetAccountId, amount, currency, reference );
     }
-
 
     @Override
     public String toString()
@@ -283,6 +262,5 @@ public class TransferRequest
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

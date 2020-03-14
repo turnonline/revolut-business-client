@@ -28,13 +28,11 @@ import java.util.Objects;
 @JsonPropertyOrder( {
         PaymentDraftsResponse.JSON_PROPERTY_PAYMENT_ORDERS
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class PaymentDraftsResponse
 {
     public static final String JSON_PROPERTY_PAYMENT_ORDERS = "payment_orders";
 
     private List<PaymentOrderInfo> paymentOrders = new ArrayList<>();
-
 
     public PaymentDraftsResponse paymentOrders( List<PaymentOrderInfo> paymentOrders )
     {
@@ -57,18 +55,15 @@ public class PaymentDraftsResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_PAYMENT_ORDERS )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public List<PaymentOrderInfo> getPaymentOrders()
     {
         return paymentOrders;
     }
 
-
     public void setPaymentOrders( List<PaymentOrderInfo> paymentOrders )
     {
         this.paymentOrders = paymentOrders;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -90,7 +85,6 @@ public class PaymentDraftsResponse
     {
         return Objects.hash( paymentOrders );
     }
-
 
     @Override
     public String toString()
@@ -114,6 +108,5 @@ public class PaymentDraftsResponse
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

@@ -40,7 +40,6 @@ import java.util.Objects;
         CreateCounterpartyRequest.JSON_PROPERTY_CLABE,
         CreateCounterpartyRequest.JSON_PROPERTY_ADDRESS
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.366+01:00[Europe/Bratislava]" )
 public class CreateCounterpartyRequest
 {
     public static final String JSON_PROPERTY_COMPANY_NAME = "company_name";
@@ -103,7 +102,6 @@ public class CreateCounterpartyRequest
 
     private BeneficiaryAddress address;
 
-
     public CreateCounterpartyRequest companyName( String companyName )
     {
 
@@ -120,18 +118,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_COMPANY_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCompanyName()
     {
         return companyName;
     }
 
-
     public void setCompanyName( String companyName )
     {
         this.companyName = companyName;
     }
-
 
     public CreateCounterpartyRequest profileType( ProfileType profileType )
     {
@@ -149,18 +144,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_PROFILE_TYPE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public ProfileType getProfileType()
     {
         return profileType;
     }
 
-
     public void setProfileType( ProfileType profileType )
     {
         this.profileType = profileType;
     }
-
 
     public CreateCounterpartyRequest name( String name )
     {
@@ -178,18 +170,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getName()
     {
         return name;
     }
 
-
     public void setName( String name )
     {
         this.name = name;
     }
-
 
     public CreateCounterpartyRequest individualName( IndividualName individualName )
     {
@@ -207,18 +196,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_INDIVIDUAL_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public IndividualName getIndividualName()
     {
         return individualName;
     }
 
-
     public void setIndividualName( IndividualName individualName )
     {
         this.individualName = individualName;
     }
-
 
     public CreateCounterpartyRequest bankCountry( String bankCountry )
     {
@@ -236,18 +222,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BANK_COUNTRY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getBankCountry()
     {
         return bankCountry;
     }
 
-
     public void setBankCountry( String bankCountry )
     {
         this.bankCountry = bankCountry;
     }
-
 
     public CreateCounterpartyRequest currency( String currency )
     {
@@ -265,18 +248,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCurrency()
     {
         return currency;
     }
 
-
     public void setCurrency( String currency )
     {
         this.currency = currency;
     }
-
 
     public CreateCounterpartyRequest email( String email )
     {
@@ -294,18 +274,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_EMAIL )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getEmail()
     {
         return email;
     }
 
-
     public void setEmail( String email )
     {
         this.email = email;
     }
-
 
     public CreateCounterpartyRequest phone( String phone )
     {
@@ -323,18 +300,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_PHONE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getPhone()
     {
         return phone;
     }
 
-
     public void setPhone( String phone )
     {
         this.phone = phone;
     }
-
 
     public CreateCounterpartyRequest accountNo( String accountNo )
     {
@@ -352,18 +326,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_NO )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getAccountNo()
     {
         return accountNo;
     }
 
-
     public void setAccountNo( String accountNo )
     {
         this.accountNo = accountNo;
     }
-
 
     public CreateCounterpartyRequest iban( String iban )
     {
@@ -381,18 +352,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_IBAN )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getIban()
     {
         return iban;
     }
 
-
     public void setIban( String iban )
     {
         this.iban = iban;
     }
-
 
     public CreateCounterpartyRequest sortCode( String sortCode )
     {
@@ -410,18 +378,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_SORT_CODE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getSortCode()
     {
         return sortCode;
     }
 
-
     public void setSortCode( String sortCode )
     {
         this.sortCode = sortCode;
     }
-
 
     public CreateCounterpartyRequest routingNumber( String routingNumber )
     {
@@ -439,18 +404,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ROUTING_NUMBER )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getRoutingNumber()
     {
         return routingNumber;
     }
 
-
     public void setRoutingNumber( String routingNumber )
     {
         this.routingNumber = routingNumber;
     }
-
 
     public CreateCounterpartyRequest bic( String bic )
     {
@@ -468,18 +430,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BIC )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getBic()
     {
         return bic;
     }
 
-
     public void setBic( String bic )
     {
         this.bic = bic;
     }
-
 
     public CreateCounterpartyRequest clabe( String clabe )
     {
@@ -497,18 +456,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CLABE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getClabe()
     {
         return clabe;
     }
 
-
     public void setClabe( String clabe )
     {
         this.clabe = clabe;
     }
-
 
     public CreateCounterpartyRequest address( BeneficiaryAddress address )
     {
@@ -526,18 +482,15 @@ public class CreateCounterpartyRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ADDRESS )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public BeneficiaryAddress getAddress()
     {
         return address;
     }
 
-
     public void setAddress( BeneficiaryAddress address )
     {
         this.address = address;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -573,7 +526,6 @@ public class CreateCounterpartyRequest
     {
         return Objects.hash( companyName, profileType, name, individualName, bankCountry, currency, email, phone, accountNo, iban, sortCode, routingNumber, bic, clabe, address );
     }
-
 
     @Override
     public String toString()
@@ -611,6 +563,5 @@ public class CreateCounterpartyRequest
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

@@ -31,7 +31,6 @@ import java.util.Objects;
         PaymentDraftResponse.JSON_PROPERTY_TITLE,
         PaymentDraftResponse.JSON_PROPERTY_PAYMENTS
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class PaymentDraftResponse
 {
     public static final String JSON_PROPERTY_SCHEDULED_FOR = "scheduled_for";
@@ -45,7 +44,6 @@ public class PaymentDraftResponse
     private String title;
 
     private List<PaymentInfo> payments = new ArrayList<>();
-
 
     public PaymentDraftResponse scheduledFor( LocalDate scheduledFor )
     {
@@ -63,18 +61,15 @@ public class PaymentDraftResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_SCHEDULED_FOR )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public LocalDate getScheduledFor()
     {
         return scheduledFor;
     }
 
-
     public void setScheduledFor( LocalDate scheduledFor )
     {
         this.scheduledFor = scheduledFor;
     }
-
 
     public PaymentDraftResponse title( String title )
     {
@@ -92,18 +87,15 @@ public class PaymentDraftResponse
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_TITLE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getTitle()
     {
         return title;
     }
 
-
     public void setTitle( String title )
     {
         this.title = title;
     }
-
 
     public PaymentDraftResponse payments( List<PaymentInfo> payments )
     {
@@ -126,18 +118,15 @@ public class PaymentDraftResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_PAYMENTS )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public List<PaymentInfo> getPayments()
     {
         return payments;
     }
 
-
     public void setPayments( List<PaymentInfo> payments )
     {
         this.payments = payments;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -187,6 +176,5 @@ public class PaymentDraftResponse
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

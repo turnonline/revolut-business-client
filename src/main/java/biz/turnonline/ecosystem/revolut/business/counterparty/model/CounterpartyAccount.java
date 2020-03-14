@@ -41,56 +41,55 @@ import java.util.UUID;
         CounterpartyAccount.JSON_PROPERTY_CLABE,
         CounterpartyAccount.JSON_PROPERTY_RECIPIENT_CHARGES
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.366+01:00[Europe/Bratislava]" )
 public class CounterpartyAccount
 {
     public static final String JSON_PROPERTY_ID = "id";
 
-    public static final String JSON_PROPERTY_NAME = "name";
-
-    public static final String JSON_PROPERTY_EMAIL = "email";
-
-    public static final String JSON_PROPERTY_BANK_COUNTRY = "bank_country";
-
-    public static final String JSON_PROPERTY_CURRENCY = "currency";
-
-    public static final String JSON_PROPERTY_TYPE = "type";
-
     public static final String JSON_PROPERTY_ACCOUNT_NO = "account_no";
+
+    public static final String JSON_PROPERTY_NAME = "name";
 
     public static final String JSON_PROPERTY_IBAN = "iban";
 
+    public static final String JSON_PROPERTY_EMAIL = "email";
+
     public static final String JSON_PROPERTY_SORT_CODE = "sort_code";
 
+    public static final String JSON_PROPERTY_BANK_COUNTRY = "bank_country";
+
     public static final String JSON_PROPERTY_ROUTING_NUMBER = "routing_number";
+
+    public static final String JSON_PROPERTY_CURRENCY = "currency";
 
     public static final String JSON_PROPERTY_BIC = "bic";
 
     public static final String JSON_PROPERTY_CLABE = "clabe";
 
+    public static final String JSON_PROPERTY_TYPE = "type";
+
     public static final String JSON_PROPERTY_RECIPIENT_CHARGES = "recipient_charges";
-
-    private UUID id;
-
-    private String name;
-
-    private String email;
-
-    private String bankCountry;
-
-    private String currency;
 
     private TypeEnum type;
 
     private String accountNo;
 
+    private UUID id;
+
     private String iban;
+
+    private String name;
 
     private String sortCode;
 
+    private String email;
+
     private String routingNumber;
 
+    private String bankCountry;
+
     private String bic;
+
+    private String currency;
 
     private String clabe;
 
@@ -111,7 +110,6 @@ public class CounterpartyAccount
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getId()
     {
         return id;
@@ -138,7 +136,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getName()
     {
         return name;
@@ -165,7 +162,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_EMAIL )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getEmail()
     {
         return email;
@@ -192,7 +188,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BANK_COUNTRY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getBankCountry()
     {
         return bankCountry;
@@ -218,7 +213,6 @@ public class CounterpartyAccount
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getCurrency()
     {
         return currency;
@@ -244,7 +238,6 @@ public class CounterpartyAccount
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_TYPE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public TypeEnum getType()
     {
         return type;
@@ -271,7 +264,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_NO )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getAccountNo()
     {
         return accountNo;
@@ -298,7 +290,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_IBAN )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getIban()
     {
         return iban;
@@ -325,7 +316,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_SORT_CODE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getSortCode()
     {
         return sortCode;
@@ -352,7 +342,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ROUTING_NUMBER )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getRoutingNumber()
     {
         return routingNumber;
@@ -379,7 +368,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BIC )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getBic()
     {
         return bic;
@@ -406,7 +394,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CLABE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getClabe()
     {
         return clabe;
@@ -433,7 +420,6 @@ public class CounterpartyAccount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_RECIPIENT_CHARGES )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public RecipientChargesEnum getRecipientCharges()
     {
         return recipientCharges;
@@ -511,7 +497,6 @@ public class CounterpartyAccount
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 
     /**
      * Gets or Sets type
@@ -596,6 +581,5 @@ public class CounterpartyAccount
             return String.valueOf( value );
         }
     }
-
 }
 

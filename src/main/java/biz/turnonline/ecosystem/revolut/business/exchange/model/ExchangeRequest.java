@@ -29,7 +29,6 @@ import java.util.Objects;
         ExchangeRequest.JSON_PROPERTY_REFERENCE,
         ExchangeRequest.JSON_PROPERTY_REQUEST_ID
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.813+01:00[Europe/Bratislava]" )
 public class ExchangeRequest
 {
     public static final String JSON_PROPERTY_FROM = "from";
@@ -48,7 +47,6 @@ public class ExchangeRequest
 
     private String requestId;
 
-
     public ExchangeRequest from( ExchangePart from )
     {
 
@@ -64,18 +62,15 @@ public class ExchangeRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_FROM )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public ExchangePart getFrom()
     {
         return from;
     }
 
-
     public void setFrom( ExchangePart from )
     {
         this.from = from;
     }
-
 
     public ExchangeRequest to( ExchangePart to )
     {
@@ -92,18 +87,15 @@ public class ExchangeRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_TO )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public ExchangePart getTo()
     {
         return to;
     }
 
-
     public void setTo( ExchangePart to )
     {
         this.to = to;
     }
-
 
     public ExchangeRequest reference( String reference )
     {
@@ -121,18 +113,15 @@ public class ExchangeRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REFERENCE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getReference()
     {
         return reference;
     }
 
-
     public void setReference( String reference )
     {
         this.reference = reference;
     }
-
 
     public ExchangeRequest requestId( String requestId )
     {
@@ -149,18 +138,15 @@ public class ExchangeRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_REQUEST_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getRequestId()
     {
         return requestId;
     }
 
-
     public void setRequestId( String requestId )
     {
         this.requestId = requestId;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -185,7 +171,6 @@ public class ExchangeRequest
     {
         return Objects.hash( from, to, reference, requestId );
     }
-
 
     @Override
     public String toString()
@@ -212,6 +197,5 @@ public class ExchangeRequest
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

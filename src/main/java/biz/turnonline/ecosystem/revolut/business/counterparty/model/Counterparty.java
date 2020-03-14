@@ -40,40 +40,39 @@ import java.util.UUID;
         Counterparty.JSON_PROPERTY_UPDATED_AT,
         Counterparty.JSON_PROPERTY_ACCOUNTS
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.366+01:00[Europe/Bratislava]" )
 public class Counterparty
 {
     public static final String JSON_PROPERTY_ID = "id";
 
-    public static final String JSON_PROPERTY_NAME = "name";
-
-    public static final String JSON_PROPERTY_PHONE = "phone";
-
-    public static final String JSON_PROPERTY_PROFILE_TYPE = "profile_type";
-
-    public static final String JSON_PROPERTY_COUNTRY = "country";
-
     public static final String JSON_PROPERTY_STATE = "state";
+
+    public static final String JSON_PROPERTY_NAME = "name";
 
     public static final String JSON_PROPERTY_CREATED_AT = "created_at";
 
+    public static final String JSON_PROPERTY_PHONE = "phone";
+
     public static final String JSON_PROPERTY_UPDATED_AT = "updated_at";
 
+    public static final String JSON_PROPERTY_PROFILE_TYPE = "profile_type";
+
     public static final String JSON_PROPERTY_ACCOUNTS = "accounts";
+
+    public static final String JSON_PROPERTY_COUNTRY = "country";
+
+    private String country;
 
     private UUID id;
 
     private String name;
 
-    private String phone;
-
-    private ProfileType profileType;
-
-    private String country;
-
     private StateEnum state;
 
+    private String phone;
+
     private OffsetDateTime createdAt;
+
+    private ProfileType profileType;
 
     private OffsetDateTime updatedAt;
 
@@ -94,7 +93,6 @@ public class Counterparty
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getId()
     {
         return id;
@@ -120,7 +118,6 @@ public class Counterparty
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_NAME )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getName()
     {
         return name;
@@ -147,7 +144,6 @@ public class Counterparty
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_PHONE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getPhone()
     {
         return phone;
@@ -174,7 +170,6 @@ public class Counterparty
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_PROFILE_TYPE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public ProfileType getProfileType()
     {
         return profileType;
@@ -201,7 +196,6 @@ public class Counterparty
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_COUNTRY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCountry()
     {
         return country;
@@ -227,7 +221,6 @@ public class Counterparty
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_STATE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public StateEnum getState()
     {
         return state;
@@ -253,7 +246,6 @@ public class Counterparty
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CREATED_AT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public OffsetDateTime getCreatedAt()
     {
         return createdAt;
@@ -279,7 +271,6 @@ public class Counterparty
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_UPDATED_AT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public OffsetDateTime getUpdatedAt()
     {
         return updatedAt;
@@ -316,7 +307,6 @@ public class Counterparty
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNTS )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public List<CounterpartyAccount> getAccounts()
     {
         return accounts;
@@ -430,6 +420,5 @@ public class Counterparty
             return String.valueOf( value );
         }
     }
-
 }
 

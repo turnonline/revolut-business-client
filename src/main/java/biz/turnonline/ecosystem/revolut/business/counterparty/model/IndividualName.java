@@ -27,7 +27,6 @@ import java.util.Objects;
         IndividualName.JSON_PROPERTY_FIRST_NAME,
         IndividualName.JSON_PROPERTY_LAST_NAME
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.366+01:00[Europe/Bratislava]" )
 public class IndividualName
 {
     public static final String JSON_PROPERTY_FIRST_NAME = "first_name";
@@ -37,7 +36,6 @@ public class IndividualName
     private String firstName;
 
     private String lastName;
-
 
     public IndividualName firstName( String firstName )
     {
@@ -55,18 +53,15 @@ public class IndividualName
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_FIRST_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getFirstName()
     {
         return firstName;
     }
 
-
     public void setFirstName( String firstName )
     {
         this.firstName = firstName;
     }
-
 
     public IndividualName lastName( String lastName )
     {
@@ -84,18 +79,15 @@ public class IndividualName
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_LAST_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getLastName()
     {
         return lastName;
     }
 
-
     public void setLastName( String lastName )
     {
         this.lastName = lastName;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -118,7 +110,6 @@ public class IndividualName
     {
         return Objects.hash( firstName, lastName );
     }
-
 
     @Override
     public String toString()
@@ -143,6 +134,5 @@ public class IndividualName
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

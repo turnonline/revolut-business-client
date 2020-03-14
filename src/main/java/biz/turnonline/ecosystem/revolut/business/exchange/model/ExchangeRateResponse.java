@@ -31,7 +31,6 @@ import java.util.Objects;
         ExchangeRateResponse.JSON_PROPERTY_FEE,
         ExchangeRateResponse.JSON_PROPERTY_RATE_DATE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.813+01:00[Europe/Bratislava]" )
 public class ExchangeRateResponse
 {
     public static final String JSON_PROPERTY_FROM = "from";
@@ -54,7 +53,6 @@ public class ExchangeRateResponse
 
     private OffsetDateTime rateDate;
 
-
     public ExchangeRateResponse from( Amount from )
     {
 
@@ -70,18 +68,15 @@ public class ExchangeRateResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_FROM )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Amount getFrom()
     {
         return from;
     }
 
-
     public void setFrom( Amount from )
     {
         this.from = from;
     }
-
 
     public ExchangeRateResponse to( Amount to )
     {
@@ -98,18 +93,15 @@ public class ExchangeRateResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_TO )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Amount getTo()
     {
         return to;
     }
 
-
     public void setTo( Amount to )
     {
         this.to = to;
     }
-
 
     public ExchangeRateResponse rate( Double rate )
     {
@@ -126,18 +118,15 @@ public class ExchangeRateResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_RATE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Double getRate()
     {
         return rate;
     }
 
-
     public void setRate( Double rate )
     {
         this.rate = rate;
     }
-
 
     public ExchangeRateResponse fee( Amount fee )
     {
@@ -154,18 +143,15 @@ public class ExchangeRateResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_FEE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Amount getFee()
     {
         return fee;
     }
 
-
     public void setFee( Amount fee )
     {
         this.fee = fee;
     }
-
 
     public ExchangeRateResponse rateDate( OffsetDateTime rateDate )
     {
@@ -182,18 +168,15 @@ public class ExchangeRateResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_RATE_DATE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public OffsetDateTime getRateDate()
     {
         return rateDate;
     }
 
-
     public void setRateDate( OffsetDateTime rateDate )
     {
         this.rateDate = rateDate;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -219,7 +202,6 @@ public class ExchangeRateResponse
     {
         return Objects.hash( from, to, rate, fee, rateDate );
     }
-
 
     @Override
     public String toString()
@@ -247,6 +229,5 @@ public class ExchangeRateResponse
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

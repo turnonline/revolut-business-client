@@ -27,7 +27,6 @@ import java.util.Objects;
         Error.JSON_PROPERTY_CODE,
         Error.JSON_PROPERTY_MESSAGE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.366+01:00[Europe/Bratislava]" )
 public class Error
 {
     public static final String JSON_PROPERTY_CODE = "code";
@@ -37,7 +36,6 @@ public class Error
     private Integer code;
 
     private String message;
-
 
     public Error code( Integer code )
     {
@@ -54,18 +52,15 @@ public class Error
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CODE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Integer getCode()
     {
         return code;
     }
 
-
     public void setCode( Integer code )
     {
         this.code = code;
     }
-
 
     public Error message( String message )
     {
@@ -82,18 +77,15 @@ public class Error
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_MESSAGE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getMessage()
     {
         return message;
     }
 
-
     public void setMessage( String message )
     {
         this.message = message;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -116,7 +108,6 @@ public class Error
     {
         return Objects.hash( code, message );
     }
-
 
     @Override
     public String toString()
@@ -141,6 +132,5 @@ public class Error
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

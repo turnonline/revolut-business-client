@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum ProfileType
 {
-
     PERSONAL( "personal" ),
 
     BUSINESS( "business" );

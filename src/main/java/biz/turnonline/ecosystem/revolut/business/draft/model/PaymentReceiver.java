@@ -28,7 +28,6 @@ import java.util.UUID;
         PaymentReceiver.JSON_PROPERTY_COUNTERPARTY_ID,
         PaymentReceiver.JSON_PROPERTY_ACCOUNT_ID
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class PaymentReceiver
 {
     public static final String JSON_PROPERTY_COUNTERPARTY_ID = "counterparty_id";
@@ -38,7 +37,6 @@ public class PaymentReceiver
     private UUID counterpartyId;
 
     private UUID accountId;
-
 
     public PaymentReceiver counterpartyId( UUID counterpartyId )
     {
@@ -55,18 +53,15 @@ public class PaymentReceiver
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_COUNTERPARTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getCounterpartyId()
     {
         return counterpartyId;
     }
 
-
     public void setCounterpartyId( UUID counterpartyId )
     {
         this.counterpartyId = counterpartyId;
     }
-
 
     public PaymentReceiver accountId( UUID accountId )
     {
@@ -84,18 +79,15 @@ public class PaymentReceiver
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_ID )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public UUID getAccountId()
     {
         return accountId;
     }
 
-
     public void setAccountId( UUID accountId )
     {
         this.accountId = accountId;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -118,7 +110,6 @@ public class PaymentReceiver
     {
         return Objects.hash( counterpartyId, accountId );
     }
-
 
     @Override
     public String toString()
@@ -143,6 +134,5 @@ public class PaymentReceiver
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

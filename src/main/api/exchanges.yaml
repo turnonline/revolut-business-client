@@ -156,6 +156,7 @@ components:
         - completed
         - declined
         - failed
+        - reverted
     Amount:
       type: object
       properties:

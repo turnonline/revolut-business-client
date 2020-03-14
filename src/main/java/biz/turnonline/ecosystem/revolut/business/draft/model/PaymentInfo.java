@@ -36,7 +36,6 @@ import java.util.UUID;
         PaymentInfo.JSON_PROPERTY_ERROR_MESSAGE,
         PaymentInfo.JSON_PROPERTY_CURRENT_CHARGE_OPTIONS
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class PaymentInfo
 {
     public static final String JSON_PROPERTY_ID = "id";
@@ -79,7 +78,6 @@ public class PaymentInfo
 
     private PaymentInfoCurrentChargeOptions currentChargeOptions;
 
-
     public PaymentInfo id( UUID id )
     {
 
@@ -95,18 +93,15 @@ public class PaymentInfo
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getId()
     {
         return id;
     }
 
-
     public void setId( UUID id )
     {
         this.id = id;
     }
-
 
     public PaymentInfo amount( Amount amount )
     {
@@ -123,18 +118,15 @@ public class PaymentInfo
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_AMOUNT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Amount getAmount()
     {
         return amount;
     }
 
-
     public void setAmount( Amount amount )
     {
         this.amount = amount;
     }
-
 
     public PaymentInfo currency( String currency )
     {
@@ -152,18 +144,15 @@ public class PaymentInfo
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCurrency()
     {
         return currency;
     }
 
-
     public void setCurrency( String currency )
     {
         this.currency = currency;
     }
-
 
     public PaymentInfo accountId( UUID accountId )
     {
@@ -180,18 +169,15 @@ public class PaymentInfo
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getAccountId()
     {
         return accountId;
     }
 
-
     public void setAccountId( UUID accountId )
     {
         this.accountId = accountId;
     }
-
 
     public PaymentInfo reference( String reference )
     {
@@ -209,18 +195,15 @@ public class PaymentInfo
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REFERENCE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getReference()
     {
         return reference;
     }
 
-
     public void setReference( String reference )
     {
         this.reference = reference;
     }
-
 
     public PaymentInfo receiver( PaymentReceiver receiver )
     {
@@ -237,18 +220,15 @@ public class PaymentInfo
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_RECEIVER )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public PaymentReceiver getReceiver()
     {
         return receiver;
     }
 
-
     public void setReceiver( PaymentReceiver receiver )
     {
         this.receiver = receiver;
     }
-
 
     public PaymentInfo state( PaymentState state )
     {
@@ -265,18 +245,15 @@ public class PaymentInfo
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_STATE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public PaymentState getState()
     {
         return state;
     }
 
-
     public void setState( PaymentState state )
     {
         this.state = state;
     }
-
 
     public PaymentInfo reason( String reason )
     {
@@ -294,18 +271,15 @@ public class PaymentInfo
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REASON )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getReason()
     {
         return reason;
     }
 
-
     public void setReason( String reason )
     {
         this.reason = reason;
     }
-
 
     public PaymentInfo errorMessage( String errorMessage )
     {
@@ -323,18 +297,15 @@ public class PaymentInfo
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ERROR_MESSAGE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getErrorMessage()
     {
         return errorMessage;
     }
 
-
     public void setErrorMessage( String errorMessage )
     {
         this.errorMessage = errorMessage;
     }
-
 
     public PaymentInfo currentChargeOptions( PaymentInfoCurrentChargeOptions currentChargeOptions )
     {
@@ -351,18 +322,15 @@ public class PaymentInfo
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENT_CHARGE_OPTIONS )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public PaymentInfoCurrentChargeOptions getCurrentChargeOptions()
     {
         return currentChargeOptions;
     }
 
-
     public void setCurrentChargeOptions( PaymentInfoCurrentChargeOptions currentChargeOptions )
     {
         this.currentChargeOptions = currentChargeOptions;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -393,7 +361,6 @@ public class PaymentInfo
     {
         return Objects.hash( id, amount, currency, accountId, reference, receiver, state, reason, errorMessage, currentChargeOptions );
     }
-
 
     @Override
     public String toString()
@@ -426,6 +393,5 @@ public class PaymentInfo
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

@@ -36,7 +36,6 @@ import java.util.UUID;
         TransactionLeg.JSON_PROPERTY_DESCRIPTION,
         TransactionLeg.JSON_PROPERTY_BALANCE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.956+01:00[Europe/Bratislava]" )
 public class TransactionLeg
 {
     public static final String JSON_PROPERTY_LEG_ID = "leg_id";
@@ -79,7 +78,6 @@ public class TransactionLeg
 
     private Double balance;
 
-
     public TransactionLeg legId( UUID legId )
     {
 
@@ -95,18 +93,15 @@ public class TransactionLeg
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_LEG_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getLegId()
     {
         return legId;
     }
 
-
     public void setLegId( UUID legId )
     {
         this.legId = legId;
     }
-
 
     public TransactionLeg amount( Double amount )
     {
@@ -123,18 +118,15 @@ public class TransactionLeg
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_AMOUNT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Double getAmount()
     {
         return amount;
     }
 
-
     public void setAmount( Double amount )
     {
         this.amount = amount;
     }
-
 
     public TransactionLeg fee( Double fee )
     {
@@ -152,18 +144,15 @@ public class TransactionLeg
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_FEE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Double getFee()
     {
         return fee;
     }
 
-
     public void setFee( Double fee )
     {
         this.fee = fee;
     }
-
 
     public TransactionLeg currency( String currency )
     {
@@ -180,18 +169,15 @@ public class TransactionLeg
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getCurrency()
     {
         return currency;
     }
 
-
     public void setCurrency( String currency )
     {
         this.currency = currency;
     }
-
 
     public TransactionLeg billAmount( Double billAmount )
     {
@@ -209,18 +195,15 @@ public class TransactionLeg
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BILL_AMOUNT )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Double getBillAmount()
     {
         return billAmount;
     }
 
-
     public void setBillAmount( Double billAmount )
     {
         this.billAmount = billAmount;
     }
-
 
     public TransactionLeg billCurrency( String billCurrency )
     {
@@ -238,18 +221,15 @@ public class TransactionLeg
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BILL_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getBillCurrency()
     {
         return billCurrency;
     }
 
-
     public void setBillCurrency( String billCurrency )
     {
         this.billCurrency = billCurrency;
     }
-
 
     public TransactionLeg accountId( UUID accountId )
     {
@@ -266,18 +246,15 @@ public class TransactionLeg
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getAccountId()
     {
         return accountId;
     }
 
-
     public void setAccountId( UUID accountId )
     {
         this.accountId = accountId;
     }
-
 
     public TransactionLeg counterparty( TransactionCounterparty counterparty )
     {
@@ -295,18 +272,15 @@ public class TransactionLeg
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_COUNTERPARTY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public TransactionCounterparty getCounterparty()
     {
         return counterparty;
     }
 
-
     public void setCounterparty( TransactionCounterparty counterparty )
     {
         this.counterparty = counterparty;
     }
-
 
     public TransactionLeg description( String description )
     {
@@ -324,18 +298,15 @@ public class TransactionLeg
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_DESCRIPTION )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getDescription()
     {
         return description;
     }
 
-
     public void setDescription( String description )
     {
         this.description = description;
     }
-
 
     public TransactionLeg balance( Double balance )
     {
@@ -353,18 +324,15 @@ public class TransactionLeg
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BALANCE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Double getBalance()
     {
         return balance;
     }
 
-
     public void setBalance( Double balance )
     {
         this.balance = balance;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -395,7 +363,6 @@ public class TransactionLeg
     {
         return Objects.hash( legId, amount, fee, currency, billAmount, billCurrency, accountId, counterparty, description, balance );
     }
-
 
     @Override
     public String toString()
@@ -428,6 +395,5 @@ public class TransactionLeg
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

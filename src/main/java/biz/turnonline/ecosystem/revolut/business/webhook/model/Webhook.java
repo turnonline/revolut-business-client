@@ -27,13 +27,11 @@ import java.util.Objects;
 @JsonPropertyOrder( {
         Webhook.JSON_PROPERTY_URL
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:42.274+01:00[Europe/Bratislava]" )
 public class Webhook
 {
     public static final String JSON_PROPERTY_URL = "url";
 
     private URI url;
-
 
     public Webhook url( URI url )
     {
@@ -50,18 +48,15 @@ public class Webhook
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_URL )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public URI getUrl()
     {
         return url;
     }
 
-
     public void setUrl( URI url )
     {
         this.url = url;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -83,7 +78,6 @@ public class Webhook
     {
         return Objects.hash( url );
     }
-
 
     @Override
     public String toString()
@@ -107,6 +101,5 @@ public class Webhook
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

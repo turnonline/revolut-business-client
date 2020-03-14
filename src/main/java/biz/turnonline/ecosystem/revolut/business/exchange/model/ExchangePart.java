@@ -29,7 +29,6 @@ import java.util.UUID;
         ExchangePart.JSON_PROPERTY_CURRENCY,
         ExchangePart.JSON_PROPERTY_AMOUNT
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.813+01:00[Europe/Bratislava]" )
 public class ExchangePart
 {
     public static final String JSON_PROPERTY_ACCOUNT_ID = "account_id";
@@ -43,7 +42,6 @@ public class ExchangePart
     private String currency;
 
     private Double amount;
-
 
     public ExchangePart accountId( UUID accountId )
     {
@@ -60,18 +58,15 @@ public class ExchangePart
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getAccountId()
     {
         return accountId;
     }
 
-
     public void setAccountId( UUID accountId )
     {
         this.accountId = accountId;
     }
-
 
     public ExchangePart currency( String currency )
     {
@@ -88,18 +83,15 @@ public class ExchangePart
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getCurrency()
     {
         return currency;
     }
 
-
     public void setCurrency( String currency )
     {
         this.currency = currency;
     }
-
 
     public ExchangePart amount( Double amount )
     {
@@ -117,18 +109,15 @@ public class ExchangePart
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_AMOUNT )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Double getAmount()
     {
         return amount;
     }
 
-
     public void setAmount( Double amount )
     {
         this.amount = amount;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -152,7 +141,6 @@ public class ExchangePart
     {
         return Objects.hash( accountId, currency, amount );
     }
-
 
     @Override
     public String toString()
@@ -178,6 +166,5 @@ public class ExchangePart
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

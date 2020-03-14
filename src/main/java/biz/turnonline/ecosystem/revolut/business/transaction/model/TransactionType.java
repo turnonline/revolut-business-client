@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum TransactionType
 {
-
     ATM( "atm" ),
 
     CARD_PAYMENT( "card_payment" ),

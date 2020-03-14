@@ -27,13 +27,11 @@ import java.util.UUID;
 @JsonPropertyOrder( {
         CreatePaymentDraftResponse.JSON_PROPERTY_ID
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class CreatePaymentDraftResponse
 {
     public static final String JSON_PROPERTY_ID = "id";
 
     private UUID id;
-
 
     public CreatePaymentDraftResponse id( UUID id )
     {
@@ -50,18 +48,15 @@ public class CreatePaymentDraftResponse
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getId()
     {
         return id;
     }
 
-
     public void setId( UUID id )
     {
         this.id = id;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -83,7 +78,6 @@ public class CreatePaymentDraftResponse
     {
         return Objects.hash( id );
     }
-
 
     @Override
     public String toString()
@@ -107,6 +101,5 @@ public class CreatePaymentDraftResponse
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

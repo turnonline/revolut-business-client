@@ -29,7 +29,6 @@ import java.util.Objects;
         PaymentInfoCurrentChargeOptions.JSON_PROPERTY_RATE,
         PaymentInfoCurrentChargeOptions.JSON_PROPERTY_FEE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class PaymentInfoCurrentChargeOptions
 {
     public static final String JSON_PROPERTY_FROM = "from";
@@ -48,7 +47,6 @@ public class PaymentInfoCurrentChargeOptions
 
     private Amount fee;
 
-
     public PaymentInfoCurrentChargeOptions from( Amount from )
     {
 
@@ -64,18 +62,15 @@ public class PaymentInfoCurrentChargeOptions
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_FROM )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Amount getFrom()
     {
         return from;
     }
 
-
     public void setFrom( Amount from )
     {
         this.from = from;
     }
-
 
     public PaymentInfoCurrentChargeOptions to( Amount to )
     {
@@ -92,18 +87,15 @@ public class PaymentInfoCurrentChargeOptions
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_TO )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Amount getTo()
     {
         return to;
     }
 
-
     public void setTo( Amount to )
     {
         this.to = to;
     }
-
 
     public PaymentInfoCurrentChargeOptions rate( String rate )
     {
@@ -121,18 +113,15 @@ public class PaymentInfoCurrentChargeOptions
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_RATE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getRate()
     {
         return rate;
     }
 
-
     public void setRate( String rate )
     {
         this.rate = rate;
     }
-
 
     public PaymentInfoCurrentChargeOptions fee( Amount fee )
     {
@@ -150,18 +139,15 @@ public class PaymentInfoCurrentChargeOptions
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_FEE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Amount getFee()
     {
         return fee;
     }
 
-
     public void setFee( Amount fee )
     {
         this.fee = fee;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -186,7 +172,6 @@ public class PaymentInfoCurrentChargeOptions
     {
         return Objects.hash( from, to, rate, fee );
     }
-
 
     @Override
     public String toString()
@@ -213,6 +198,5 @@ public class PaymentInfoCurrentChargeOptions
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

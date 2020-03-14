@@ -37,36 +37,35 @@ import java.util.UUID;
         Account.JSON_PROPERTY_CREATED_AT,
         Account.JSON_PROPERTY_UPDATED_AT
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:40.834+01:00[Europe/Bratislava]" )
 public class Account
 {
     public static final String JSON_PROPERTY_ID = "id";
 
-    public static final String JSON_PROPERTY_NAME = "name";
-
-    public static final String JSON_PROPERTY_BALANCE = "balance";
-
-    public static final String JSON_PROPERTY_CURRENCY = "currency";
-
     public static final String JSON_PROPERTY_STATE = "state";
+
+    public static final String JSON_PROPERTY_NAME = "name";
 
     public static final String JSON_PROPERTY_PUBLIC = "public";
 
+    public static final String JSON_PROPERTY_BALANCE = "balance";
+
     public static final String JSON_PROPERTY_CREATED_AT = "created_at";
+
+    public static final String JSON_PROPERTY_CURRENCY = "currency";
 
     public static final String JSON_PROPERTY_UPDATED_AT = "updated_at";
 
-    private UUID id;
-
-    private String name;
-
-    private Double balance;
-
     private String currency;
+
+    private UUID id;
 
     private StateEnum state;
 
+    private String name;
+
     private Boolean _public;
+
+    private Double balance;
 
     private OffsetDateTime createdAt;
 
@@ -87,7 +86,6 @@ public class Account
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getId()
     {
         return id;
@@ -113,7 +111,6 @@ public class Account
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_NAME )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getName()
     {
         return name;
@@ -139,7 +136,6 @@ public class Account
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_BALANCE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Double getBalance()
     {
         return balance;
@@ -165,7 +161,6 @@ public class Account
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getCurrency()
     {
         return currency;
@@ -191,7 +186,6 @@ public class Account
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_STATE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public StateEnum getState()
     {
         return state;
@@ -217,7 +211,6 @@ public class Account
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_PUBLIC )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Boolean getPublic()
     {
         return _public;
@@ -243,7 +236,6 @@ public class Account
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CREATED_AT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public OffsetDateTime getCreatedAt()
     {
         return createdAt;
@@ -269,7 +261,6 @@ public class Account
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_UPDATED_AT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public OffsetDateTime getUpdatedAt()
     {
         return updatedAt;
@@ -379,6 +370,5 @@ public class Account
             return String.valueOf( value );
         }
     }
-
 }
 

@@ -44,7 +44,6 @@ import java.util.UUID;
         Transaction.JSON_PROPERTY_LEGS,
         Transaction.JSON_PROPERTY_CARD
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.956+01:00[Europe/Bratislava]" )
 public class Transaction
 {
     public static final String JSON_PROPERTY_ID = "id";
@@ -103,7 +102,6 @@ public class Transaction
 
     private TransactionCard card;
 
-
     public Transaction id( String id )
     {
 
@@ -119,18 +117,15 @@ public class Transaction
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getId()
     {
         return id;
     }
 
-
     public void setId( String id )
     {
         this.id = id;
     }
-
 
     public Transaction type( TransactionType type )
     {
@@ -147,18 +142,15 @@ public class Transaction
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_TYPE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public TransactionType getType()
     {
         return type;
     }
 
-
     public void setType( TransactionType type )
     {
         this.type = type;
     }
-
 
     public Transaction requestId( String requestId )
     {
@@ -176,18 +168,15 @@ public class Transaction
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REQUEST_ID )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getRequestId()
     {
         return requestId;
     }
 
-
     public void setRequestId( String requestId )
     {
         this.requestId = requestId;
     }
-
 
     public Transaction state( TransactionState state )
     {
@@ -204,18 +193,15 @@ public class Transaction
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_STATE )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public TransactionState getState()
     {
         return state;
     }
 
-
     public void setState( TransactionState state )
     {
         this.state = state;
     }
-
 
     public Transaction reasonCode( String reasonCode )
     {
@@ -233,18 +219,15 @@ public class Transaction
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REASON_CODE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getReasonCode()
     {
         return reasonCode;
     }
 
-
     public void setReasonCode( String reasonCode )
     {
         this.reasonCode = reasonCode;
     }
-
 
     public Transaction createdAt( OffsetDateTime createdAt )
     {
@@ -261,18 +244,15 @@ public class Transaction
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CREATED_AT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public OffsetDateTime getCreatedAt()
     {
         return createdAt;
     }
 
-
     public void setCreatedAt( OffsetDateTime createdAt )
     {
         this.createdAt = createdAt;
     }
-
 
     public Transaction updatedAt( OffsetDateTime updatedAt )
     {
@@ -289,18 +269,15 @@ public class Transaction
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_UPDATED_AT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public OffsetDateTime getUpdatedAt()
     {
         return updatedAt;
     }
 
-
     public void setUpdatedAt( OffsetDateTime updatedAt )
     {
         this.updatedAt = updatedAt;
     }
-
 
     public Transaction completedAt( OffsetDateTime completedAt )
     {
@@ -318,18 +295,15 @@ public class Transaction
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_COMPLETED_AT )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public OffsetDateTime getCompletedAt()
     {
         return completedAt;
     }
 
-
     public void setCompletedAt( OffsetDateTime completedAt )
     {
         this.completedAt = completedAt;
     }
-
 
     public Transaction scheduledFor( LocalDate scheduledFor )
     {
@@ -347,18 +321,15 @@ public class Transaction
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_SCHEDULED_FOR )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public LocalDate getScheduledFor()
     {
         return scheduledFor;
     }
 
-
     public void setScheduledFor( LocalDate scheduledFor )
     {
         this.scheduledFor = scheduledFor;
     }
-
 
     public Transaction relatedTransactionId( UUID relatedTransactionId )
     {
@@ -376,18 +347,15 @@ public class Transaction
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_RELATED_TRANSACTION_ID )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public UUID getRelatedTransactionId()
     {
         return relatedTransactionId;
     }
 
-
     public void setRelatedTransactionId( UUID relatedTransactionId )
     {
         this.relatedTransactionId = relatedTransactionId;
     }
-
 
     public Transaction merchant( TransactionMerchant merchant )
     {
@@ -405,18 +373,15 @@ public class Transaction
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_MERCHANT )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public TransactionMerchant getMerchant()
     {
         return merchant;
     }
 
-
     public void setMerchant( TransactionMerchant merchant )
     {
         this.merchant = merchant;
     }
-
 
     public Transaction reference( String reference )
     {
@@ -434,18 +399,15 @@ public class Transaction
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_REFERENCE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getReference()
     {
         return reference;
     }
 
-
     public void setReference( String reference )
     {
         this.reference = reference;
     }
-
 
     public Transaction legs( List<TransactionLeg> legs )
     {
@@ -468,18 +430,15 @@ public class Transaction
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_LEGS )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public List<TransactionLeg> getLegs()
     {
         return legs;
     }
 
-
     public void setLegs( List<TransactionLeg> legs )
     {
         this.legs = legs;
     }
-
 
     public Transaction card( TransactionCard card )
     {
@@ -497,18 +456,15 @@ public class Transaction
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CARD )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public TransactionCard getCard()
     {
         return card;
     }
 
-
     public void setCard( TransactionCard card )
     {
         this.card = card;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -543,7 +499,6 @@ public class Transaction
     {
         return Objects.hash( id, type, requestId, state, reasonCode, createdAt, updatedAt, completedAt, scheduledFor, relatedTransactionId, merchant, reference, legs, card );
     }
-
 
     @Override
     public String toString()
@@ -580,6 +535,5 @@ public class Transaction
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

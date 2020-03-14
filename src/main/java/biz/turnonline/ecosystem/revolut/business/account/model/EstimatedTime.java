@@ -28,7 +28,6 @@ import java.util.Objects;
         EstimatedTime.JSON_PROPERTY_MIN,
         EstimatedTime.JSON_PROPERTY_MAX
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:40.834+01:00[Europe/Bratislava]" )
 public class EstimatedTime
 {
     public static final String JSON_PROPERTY_UNIT = "unit";
@@ -42,7 +41,6 @@ public class EstimatedTime
     private Integer min;
 
     private Integer max;
-
 
     public EstimatedTime unit( String unit )
     {
@@ -59,18 +57,15 @@ public class EstimatedTime
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_UNIT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getUnit()
     {
         return unit;
     }
 
-
     public void setUnit( String unit )
     {
         this.unit = unit;
     }
-
 
     public EstimatedTime min( Integer min )
     {
@@ -88,18 +83,15 @@ public class EstimatedTime
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_MIN )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Integer getMin()
     {
         return min;
     }
 
-
     public void setMin( Integer min )
     {
         this.min = min;
     }
-
 
     public EstimatedTime max( Integer max )
     {
@@ -117,18 +109,15 @@ public class EstimatedTime
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_MAX )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Integer getMax()
     {
         return max;
     }
 
-
     public void setMax( Integer max )
     {
         this.max = max;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -152,7 +141,6 @@ public class EstimatedTime
     {
         return Objects.hash( unit, min, max );
     }
-
 
     @Override
     public String toString()
@@ -178,6 +166,5 @@ public class EstimatedTime
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

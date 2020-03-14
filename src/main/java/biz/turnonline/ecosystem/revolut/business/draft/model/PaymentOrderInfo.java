@@ -31,7 +31,6 @@ import java.util.UUID;
         PaymentOrderInfo.JSON_PROPERTY_TITLE,
         PaymentOrderInfo.JSON_PROPERTY_PAYMENTS_COUNT
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class PaymentOrderInfo
 {
     public static final String JSON_PROPERTY_ID = "id";
@@ -50,7 +49,6 @@ public class PaymentOrderInfo
 
     private Integer paymentsCount;
 
-
     public PaymentOrderInfo id( UUID id )
     {
 
@@ -66,18 +64,15 @@ public class PaymentOrderInfo
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ID )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public UUID getId()
     {
         return id;
     }
 
-
     public void setId( UUID id )
     {
         this.id = id;
     }
-
 
     public PaymentOrderInfo scheduledFor( LocalDate scheduledFor )
     {
@@ -95,18 +90,15 @@ public class PaymentOrderInfo
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_SCHEDULED_FOR )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public LocalDate getScheduledFor()
     {
         return scheduledFor;
     }
 
-
     public void setScheduledFor( LocalDate scheduledFor )
     {
         this.scheduledFor = scheduledFor;
     }
-
 
     public PaymentOrderInfo title( String title )
     {
@@ -124,18 +116,15 @@ public class PaymentOrderInfo
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_TITLE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getTitle()
     {
         return title;
     }
 
-
     public void setTitle( String title )
     {
         this.title = title;
     }
-
 
     public PaymentOrderInfo paymentsCount( Integer paymentsCount )
     {
@@ -152,18 +141,15 @@ public class PaymentOrderInfo
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_PAYMENTS_COUNT )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public Integer getPaymentsCount()
     {
         return paymentsCount;
     }
 
-
     public void setPaymentsCount( Integer paymentsCount )
     {
         this.paymentsCount = paymentsCount;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -188,7 +174,6 @@ public class PaymentOrderInfo
     {
         return Objects.hash( id, scheduledFor, title, paymentsCount );
     }
-
 
     @Override
     public String toString()

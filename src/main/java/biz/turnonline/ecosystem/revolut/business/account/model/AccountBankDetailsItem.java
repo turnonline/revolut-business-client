@@ -39,7 +39,6 @@ import java.util.Objects;
         AccountBankDetailsItem.JSON_PROPERTY_SCHEMES,
         AccountBankDetailsItem.JSON_PROPERTY_ESTIMATED_TIME
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:40.834+01:00[Europe/Bratislava]" )
 public class AccountBankDetailsItem
 {
     public static final String JSON_PROPERTY_IBAN = "iban";
@@ -107,18 +106,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_IBAN )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getIban()
     {
         return iban;
     }
 
-
     public void setIban( String iban )
     {
         this.iban = iban;
     }
-
 
     public AccountBankDetailsItem bic( String bic )
     {
@@ -136,18 +132,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BIC )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getBic()
     {
         return bic;
     }
 
-
     public void setBic( String bic )
     {
         this.bic = bic;
     }
-
 
     public AccountBankDetailsItem accountNo( String accountNo )
     {
@@ -165,18 +158,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ACCOUNT_NO )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getAccountNo()
     {
         return accountNo;
     }
 
-
     public void setAccountNo( String accountNo )
     {
         this.accountNo = accountNo;
     }
-
 
     public AccountBankDetailsItem sortCode( String sortCode )
     {
@@ -194,18 +184,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_SORT_CODE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getSortCode()
     {
         return sortCode;
     }
 
-
     public void setSortCode( String sortCode )
     {
         this.sortCode = sortCode;
     }
-
 
     public AccountBankDetailsItem routingNumber( String routingNumber )
     {
@@ -223,18 +210,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_ROUTING_NUMBER )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getRoutingNumber()
     {
         return routingNumber;
     }
 
-
     public void setRoutingNumber( String routingNumber )
     {
         this.routingNumber = routingNumber;
     }
-
 
     public AccountBankDetailsItem beneficiary( String beneficiary )
     {
@@ -251,18 +235,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_BENEFICIARY )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getBeneficiary()
     {
         return beneficiary;
     }
 
-
     public void setBeneficiary( String beneficiary )
     {
         this.beneficiary = beneficiary;
     }
-
 
     public AccountBankDetailsItem beneficiaryAddress( BeneficiaryAddress beneficiaryAddress )
     {
@@ -279,18 +260,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_BENEFICIARY_ADDRESS )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public BeneficiaryAddress getBeneficiaryAddress()
     {
         return beneficiaryAddress;
     }
 
-
     public void setBeneficiaryAddress( BeneficiaryAddress beneficiaryAddress )
     {
         this.beneficiaryAddress = beneficiaryAddress;
     }
-
 
     public AccountBankDetailsItem bankCountry( String bankCountry )
     {
@@ -308,18 +286,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_BANK_COUNTRY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getBankCountry()
     {
         return bankCountry;
     }
 
-
     public void setBankCountry( String bankCountry )
     {
         this.bankCountry = bankCountry;
     }
-
 
     public AccountBankDetailsItem pooled( Boolean pooled )
     {
@@ -337,18 +312,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_POOLED )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Boolean getPooled()
     {
         return pooled;
     }
 
-
     public void setPooled( Boolean pooled )
     {
         this.pooled = pooled;
     }
-
 
     public AccountBankDetailsItem uniqueReference( String uniqueReference )
     {
@@ -366,18 +338,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_UNIQUE_REFERENCE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getUniqueReference()
     {
         return uniqueReference;
     }
 
-
     public void setUniqueReference( String uniqueReference )
     {
         this.uniqueReference = uniqueReference;
     }
-
 
     public AccountBankDetailsItem schemes( List<PaymentSystem> schemes )
     {
@@ -400,18 +369,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_SCHEMES )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public List<PaymentSystem> getSchemes()
     {
         return schemes;
     }
 
-
     public void setSchemes( List<PaymentSystem> schemes )
     {
         this.schemes = schemes;
     }
-
 
     public AccountBankDetailsItem estimatedTime( EstimatedTime estimatedTime )
     {
@@ -428,18 +394,15 @@ public class AccountBankDetailsItem
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_ESTIMATED_TIME )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public EstimatedTime getEstimatedTime()
     {
         return estimatedTime;
     }
 
-
     public void setEstimatedTime( EstimatedTime estimatedTime )
     {
         this.estimatedTime = estimatedTime;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -472,7 +435,6 @@ public class AccountBankDetailsItem
     {
         return Objects.hash( iban, bic, accountNo, sortCode, routingNumber, beneficiary, beneficiaryAddress, bankCountry, pooled, uniqueReference, schemes, estimatedTime );
     }
-
 
     @Override
     public String toString()
@@ -507,6 +469,5 @@ public class AccountBankDetailsItem
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

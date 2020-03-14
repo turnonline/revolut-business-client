@@ -27,7 +27,6 @@ import java.util.Objects;
         Amount.JSON_PROPERTY_AMOUNT,
         Amount.JSON_PROPERTY_CURRENCY
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class Amount
 {
     public static final String JSON_PROPERTY_AMOUNT = "amount";
@@ -37,7 +36,6 @@ public class Amount
     private Double amount;
 
     private String currency;
-
 
     public Amount amount( Double amount )
     {
@@ -55,18 +53,15 @@ public class Amount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_AMOUNT )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public Double getAmount()
     {
         return amount;
     }
 
-
     public void setAmount( Double amount )
     {
         this.amount = amount;
     }
-
 
     public Amount currency( String currency )
     {
@@ -84,18 +79,15 @@ public class Amount
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_CURRENCY )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getCurrency()
     {
         return currency;
     }
 
-
     public void setCurrency( String currency )
     {
         this.currency = currency;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -118,7 +110,6 @@ public class Amount
     {
         return Objects.hash( amount, currency );
     }
-
 
     @Override
     public String toString()
@@ -143,6 +134,5 @@ public class Amount
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

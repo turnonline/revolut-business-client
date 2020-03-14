@@ -31,7 +31,6 @@ import java.util.Objects;
         CreatePaymentDraftRequest.JSON_PROPERTY_SCHEDULE_FOR,
         CreatePaymentDraftRequest.JSON_PROPERTY_PAYMENTS
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.599+01:00[Europe/Bratislava]" )
 public class CreatePaymentDraftRequest
 {
     public static final String JSON_PROPERTY_TITLE = "title";
@@ -45,7 +44,6 @@ public class CreatePaymentDraftRequest
     private LocalDate scheduleFor;
 
     private List<PaymentRequest> payments = new ArrayList<>();
-
 
     public CreatePaymentDraftRequest title( String title )
     {
@@ -63,18 +61,15 @@ public class CreatePaymentDraftRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_TITLE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getTitle()
     {
         return title;
     }
 
-
     public void setTitle( String title )
     {
         this.title = title;
     }
-
 
     public CreatePaymentDraftRequest scheduleFor( LocalDate scheduleFor )
     {
@@ -92,18 +87,15 @@ public class CreatePaymentDraftRequest
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_SCHEDULE_FOR )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public LocalDate getScheduleFor()
     {
         return scheduleFor;
     }
 
-
     public void setScheduleFor( LocalDate scheduleFor )
     {
         this.scheduleFor = scheduleFor;
     }
-
 
     public CreatePaymentDraftRequest payments( List<PaymentRequest> payments )
     {
@@ -126,18 +118,15 @@ public class CreatePaymentDraftRequest
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_PAYMENTS )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public List<PaymentRequest> getPayments()
     {
         return payments;
     }
 
-
     public void setPayments( List<PaymentRequest> payments )
     {
         this.payments = payments;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -161,7 +150,6 @@ public class CreatePaymentDraftRequest
     {
         return Objects.hash( title, scheduleFor, payments );
     }
-
 
     @Override
     public String toString()
@@ -187,6 +175,5 @@ public class CreatePaymentDraftRequest
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 

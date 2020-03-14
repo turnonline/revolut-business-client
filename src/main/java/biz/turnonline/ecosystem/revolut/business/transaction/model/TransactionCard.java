@@ -29,7 +29,6 @@ import java.util.Objects;
         TransactionCard.JSON_PROPERTY_LAST_NAME,
         TransactionCard.JSON_PROPERTY_PHONE
 } )
-@javax.annotation.Generated( value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-23T19:47:41.956+01:00[Europe/Bratislava]" )
 public class TransactionCard
 {
     public static final String JSON_PROPERTY_CARD_NUMBER = "card_number";
@@ -48,7 +47,6 @@ public class TransactionCard
 
     private String phone;
 
-
     public TransactionCard cardNumber( String cardNumber )
     {
 
@@ -64,18 +62,15 @@ public class TransactionCard
     @ApiModelProperty( required = true, value = "" )
     @JsonProperty( JSON_PROPERTY_CARD_NUMBER )
     @JsonInclude( value = JsonInclude.Include.ALWAYS )
-
     public String getCardNumber()
     {
         return cardNumber;
     }
 
-
     public void setCardNumber( String cardNumber )
     {
         this.cardNumber = cardNumber;
     }
-
 
     public TransactionCard firstName( String firstName )
     {
@@ -93,18 +88,15 @@ public class TransactionCard
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_FIRST_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getFirstName()
     {
         return firstName;
     }
 
-
     public void setFirstName( String firstName )
     {
         this.firstName = firstName;
     }
-
 
     public TransactionCard lastName( String lastName )
     {
@@ -122,18 +114,15 @@ public class TransactionCard
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_LAST_NAME )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getLastName()
     {
         return lastName;
     }
 
-
     public void setLastName( String lastName )
     {
         this.lastName = lastName;
     }
-
 
     public TransactionCard phone( String phone )
     {
@@ -151,18 +140,15 @@ public class TransactionCard
     @ApiModelProperty( value = "" )
     @JsonProperty( JSON_PROPERTY_PHONE )
     @JsonInclude( value = JsonInclude.Include.USE_DEFAULTS )
-
     public String getPhone()
     {
         return phone;
     }
 
-
     public void setPhone( String phone )
     {
         this.phone = phone;
     }
-
 
     @Override
     public boolean equals( java.lang.Object o )
@@ -187,7 +173,6 @@ public class TransactionCard
     {
         return Objects.hash( cardNumber, firstName, lastName, phone );
     }
-
 
     @Override
     public String toString()
@@ -214,6 +199,5 @@ public class TransactionCard
         }
         return o.toString().replace( "\n", "\n    " );
     }
-
 }
 
