@@ -272,7 +272,7 @@
         <dependency>
             <groupId>org.ctoolkit.restapi</groupId>
             <artifactId>ctoolkit-rest-facade-appengine</artifactId>
-            <version>0.36-20200214.073300-2</version>
+            <version>${ctoolkit-rest-facade-adapter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -283,9 +283,9 @@
     </dependencies>
 
     <properties>
-        <ctoolkit-library-bom.version>13-20200123.052512-1</ctoolkit-library-bom.version>
-        <ctoolkit-rest-facade-api.version>0.29-20200210.054324-1</ctoolkit-rest-facade-api.version>
-        <ctoolkit-rest-facade-adapter.version>0.36-20200214.073253-2</ctoolkit-rest-facade-adapter.version>
+        <ctoolkit-library-bom.version>13</ctoolkit-library-bom.version>
+        <ctoolkit-rest-facade-api.version>0.29</ctoolkit-rest-facade-api.version>
+        <ctoolkit-rest-facade-adapter.version>0.36</ctoolkit-rest-facade-adapter.version>
         <jmockit.version>1.41</jmockit.version>
         <!-- jmockit settings for OpenJDK otherwise throws 'IllegalStateException: To run on OpenJDK 64-Bit Server VM use -javaagent..' -->
         <jmockit.setting>
