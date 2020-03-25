@@ -16,8 +16,7 @@
   ~
   -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
         <groupId>org.ctoolkit.maven</groupId>
@@ -28,7 +27,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.turnonline.ecosystem</groupId>
     <artifactId>turnonline-revolut-business-client</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <name>Revolut for Business Open API Java Client</name>
     <description>
@@ -39,7 +38,7 @@
         <connection>scm:git:[fetch=]git@github.com:turnonline/revolut-business-client.git</connection>
         <developerConnection>scm:git:[push=]git@github.com:turnonline/revolut-business-client.git</developerConnection>
         <url>https://github.com/turnonline/revolut-business-client</url>
-        <tag>HEAD</tag>
+        <tag>turnonline-revolut-business-client-1.0</tag>
     </scm>
 
     <issueManagement>
