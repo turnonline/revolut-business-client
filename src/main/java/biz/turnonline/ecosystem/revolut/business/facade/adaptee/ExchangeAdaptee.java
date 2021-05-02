@@ -40,7 +40,7 @@ public class ExchangeAdaptee
     @Override
     public GetFacadeRequest<ExchangeRateResponse> prepareGet( @Nonnull Identifier identifier )
     {
-        return buildGetRequest( "/rate", null, ExchangeRateResponse.class );
+        return buildGetRequest( "rate", null, ExchangeRateResponse.class );
     }
 
     @Override
