@@ -27,7 +27,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.turnonline.ecosystem</groupId>
     <artifactId>turnonline-revolut-business-client</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>Revolut for Business Open API Java Client</name>
     <description>
@@ -38,7 +38,7 @@
         <connection>scm:git:[fetch=]git@github.com:turnonline/revolut-business-client.git</connection>
         <developerConnection>scm:git:[push=]git@github.com:turnonline/revolut-business-client.git</developerConnection>
         <url>https://github.com/turnonline/revolut-business-client</url>
-        <tag>HEAD</tag>
+        <tag>turnonline-revolut-business-client-1.0.1</tag>
     </scm>
 
     <issueManagement>
